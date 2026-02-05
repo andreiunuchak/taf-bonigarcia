@@ -43,11 +43,8 @@ public class HomePage extends AbstractPage {
     private final By byABTesting = By.xpath("//a[@href='ab-testing.html']");
     private final By byDataTypes = By.xpath("//a[@href='data-types.html']");
 
-    private final Waiters waiters;
-
     public HomePage() {
         super();
-        this.waiters = new Waiters();
     }
 
     @Override

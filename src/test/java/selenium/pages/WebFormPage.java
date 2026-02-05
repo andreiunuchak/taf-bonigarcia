@@ -22,7 +22,6 @@ public class WebFormPage extends AbstractPage {
     private final By byShadowInputValue = By.cssSelector("div");
     private final By byDropdownSelect = By.name("my-select");
     private final By byDropdownDatalist = By.name("my-datalist");
-    private final By byShadowDropdownDatalistValue = By.cssSelector("#editing-view-port > div");
     private final By byFileInput = By.name("my-file");
     private final By byFileInputValue = By.cssSelector("span");
     private final By byCheckedCheckbox = By.id("my-check-1");
@@ -35,11 +34,8 @@ public class WebFormPage extends AbstractPage {
     private final By byExampleRange = By.name("my-range");
     private final By byReturnToIndex = By.xpath("//div[@class='form-group tp-align-right mt-3']");
 
-    private final Waiters waiters;
-
     public WebFormPage() {
         super();
-        this.waiters = new Waiters();
     }
 
     @Override

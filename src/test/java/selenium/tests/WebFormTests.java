@@ -131,7 +131,7 @@ public class WebFormTests extends BaseTest {
 
     @Test
     @DisplayName("Validate Radio field behavior on the WebFrom page")
-    public void testWebFormRadio() throws InterruptedException {
+    public void testWebFormRadio() {
         webForm.markDefaultRadio();
         Assertions.assertAll(
                 () -> Assertions.assertFalse(webForm.isCheckedRadioMarked()),
