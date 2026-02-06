@@ -2,7 +2,7 @@ package selenium.pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import selenium.utils.Waiters;
+import org.openqa.selenium.interactions.Actions;
 
 public class HomePage extends AbstractPage {
     public final String URL = "https://bonigarcia.dev/selenium-webdriver-java/";
@@ -72,137 +72,138 @@ public class HomePage extends AbstractPage {
 
     @Step("Click WebForm button")
     public WebFormPage clickWebForm() {
-        driver.findElement(byWebForm).click();
+        new Actions(driver).moveToElement(driver.findElement(byWebForm)).click().perform();
         return new WebFormPage();
     }
 
-    public HomePage clickNavigation() {
-        driver.findElement(byNavigation).click();
-        return new HomePage();
+    @Step("Click Navigation button")
+    public NavigationPage clickNavigation() {
+        new Actions(driver).moveToElement(driver.findElement(byNavigation)).click().perform();
+        return new NavigationPage();
     }
 
     public HomePage clickDropDownMenu() {
-        driver.findElement(byDropDownMenu).click();
+        new  Actions(driver).moveToElement(driver.findElement(byDropDownMenu)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickMouseOver() {
-        driver.findElement(byMouseOver).click();
+        new  Actions(driver).moveToElement(driver.findElement(byMouseOver)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickDragAndDrop() {
-        driver.findElement(byDragAndDrop).click();
+        new  Actions(driver).moveToElement(driver.findElement(byDragAndDrop)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickDrawInCanvas() {
-        driver.findElement(byDrawInCanvas).click();
+        new  Actions(driver).moveToElement(driver.findElement(byDrawInCanvas)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickLoadingImages() {
-        driver.findElement(byLoadingImages).click();
+        new  Actions(driver).moveToElement(driver.findElement(byLoadingImages)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickSlowCalculator() {
-        driver.findElement(bySlowCalculator).click();
+        new  Actions(driver).moveToElement(driver.findElement(bySlowCalculator)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickLongPage() {
-        driver.findElement(byLongPage).click();
+        new  Actions(driver).moveToElement(driver.findElement(byLongPage)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickInfiniteScroll() {
-        driver.findElement(byInfiniteScroll).click();
+        new Actions(driver).moveToElement(driver.findElement(byInfiniteScroll)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickShadowDom() {
-        driver.findElement(byShadowDom).click();
+        new  Actions(driver).moveToElement(driver.findElement(byShadowDom)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickCookies() {
-        driver.findElement(byCookies).click();
+        new  Actions(driver).moveToElement(driver.findElement(byCookies)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickFrames() {
-        driver.findElement(byFrames).click();
+        new  Actions(driver).moveToElement(driver.findElement(byFrames)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickIFrames() {
-        driver.findElement(byIFrames).click();
+        new  Actions(driver).moveToElement(driver.findElement(byIFrames)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickDialogBoxes() {
-        driver.findElement(byDialogBoxes).click();
+        new   Actions(driver).moveToElement(driver.findElement(byDialogBoxes)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickWebStorage() {
-        driver.findElement(byWebStorage).click();
+        new   Actions(driver).moveToElement(driver.findElement(byWebStorage)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickGeolocation() {
-        driver.findElement(byGeolocation).click();
+        new  Actions(driver).moveToElement(driver.findElement(byGeolocation)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickNotifications() {
-        driver.findElement(byNotifications).click();
+        new  Actions(driver).moveToElement(driver.findElement(byNotifications)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickGetUserMedia() {
-        driver.findElement(byGetUserMedia).click();
+        new  Actions(driver).moveToElement(driver.findElement(byGetUserMedia)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickMultilanguage() {
-        driver.findElement(byMultilanguage).click();
+        new   Actions(driver).moveToElement(driver.findElement(byMultilanguage)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickConsoleLogs() {
-        driver.findElement(byConsoleLogs).click();
+        new  Actions(driver).moveToElement(driver.findElement(byConsoleLogs)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickLoginForm() {
-        driver.findElement(byLoginForm).click();
+        new   Actions(driver).moveToElement(driver.findElement(byLoginForm)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickSlowLogin() {
-        driver.findElement(bySlowLogin).click();
+        new Actions(driver).moveToElement(driver.findElement(bySlowLogin)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickRandomCalculator() {
-        driver.findElement(byRandomCalculator).click();
+        new  Actions(driver).moveToElement(driver.findElement(byRandomCalculator)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickDownloadFiles() {
-        driver.findElement(byDownloadFiles).click();
+        new   Actions(driver).moveToElement(driver.findElement(byDownloadFiles)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickABTesting() {
-        driver.findElement(byABTesting).click();
+        new   Actions(driver).moveToElement(driver.findElement(byABTesting)).click().perform();
         return new HomePage();
     }
 
     public HomePage clickDataTypes() {
-        driver.findElement(byDataTypes).click();
+        new   Actions(driver).moveToElement(driver.findElement(byDataTypes)).click().perform();
         return new HomePage();
     }
 
