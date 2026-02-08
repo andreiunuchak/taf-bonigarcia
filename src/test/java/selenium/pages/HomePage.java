@@ -82,9 +82,9 @@ public class HomePage extends AbstractPage {
         return new NavigationPage();
     }
 
-    public HomePage clickDropDownMenu() {
+    public DropdownMenuPage clickDropDownMenu() {
         new  Actions(driver).moveToElement(driver.findElement(byDropDownMenu)).click().perform();
-        return new HomePage();
+        return new DropdownMenuPage();
     }
 
     public HomePage clickMouseOver() {
