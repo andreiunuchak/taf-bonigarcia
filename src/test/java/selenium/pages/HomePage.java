@@ -92,9 +92,9 @@ public class HomePage extends AbstractPage {
         return new MouseOverPage();
     }
 
-    public HomePage clickDragAndDrop() {
+    public DragAndDropPage clickDragAndDrop() {
         new  Actions(driver).moveToElement(driver.findElement(byDragAndDrop)).click().perform();
-        return new HomePage();
+        return new DragAndDropPage();
     }
 
     public HomePage clickDrawInCanvas() {
