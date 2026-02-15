@@ -75,6 +75,12 @@
             <artifactId>owner</artifactId>
             <version>${version.owner}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.romankh3</groupId>
+            <artifactId>image-comparison</artifactId>
+            <version>4.4.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
