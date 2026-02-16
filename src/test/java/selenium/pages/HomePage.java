@@ -82,126 +82,151 @@ public class HomePage extends AbstractPage {
         return new NavigationPage();
     }
 
+    @Step("Click DropDownMenu button")
     public DropdownMenuPage clickDropDownMenu() {
         new  Actions(driver).moveToElement(driver.findElement(byDropDownMenu)).click().perform();
         return new DropdownMenuPage();
     }
 
+    @Step("Click MouseOver button")
     public MouseOverPage clickMouseOver() {
         new  Actions(driver).moveToElement(driver.findElement(byMouseOver)).click().perform();
         return new MouseOverPage();
     }
 
+    @Step("Click DragAndDrop button")
     public DragAndDropPage clickDragAndDrop() {
         new  Actions(driver).moveToElement(driver.findElement(byDragAndDrop)).click().perform();
         return new DragAndDropPage();
     }
 
+    @Step("Click DrawInCanvas button")
     public DrawInCanvasPage clickDrawInCanvas() {
         new  Actions(driver).moveToElement(driver.findElement(byDrawInCanvas)).click().perform();
         return new DrawInCanvasPage();
     }
 
+    @Step("Click LoadingImages button")
     public LoadingImagesPage clickLoadingImages() {
         new  Actions(driver).moveToElement(driver.findElement(byLoadingImages)).click().perform();
         return new LoadingImagesPage();
     }
 
-    public HomePage clickSlowCalculator() {
+    @Step("Click SlowCalculator button")
+    public SlowCalculatorPage clickSlowCalculator() {
         new  Actions(driver).moveToElement(driver.findElement(bySlowCalculator)).click().perform();
-        return new HomePage();
+        return new SlowCalculatorPage();
     }
 
+    @Step("Click LongPage button")
     public HomePage clickLongPage() {
         new  Actions(driver).moveToElement(driver.findElement(byLongPage)).click().perform();
         return new HomePage();
     }
 
+    @Step("Click InfiniteScroll button")
     public HomePage clickInfiniteScroll() {
         new Actions(driver).moveToElement(driver.findElement(byInfiniteScroll)).click().perform();
         return new HomePage();
     }
 
+    @Step("Click ShadowDom button")
     public HomePage clickShadowDom() {
         new  Actions(driver).moveToElement(driver.findElement(byShadowDom)).click().perform();
         return new HomePage();
     }
 
+    @Step("Click Cookies button")
     public HomePage clickCookies() {
         new  Actions(driver).moveToElement(driver.findElement(byCookies)).click().perform();
         return new HomePage();
     }
 
+    @Step("Click Frames button")
     public HomePage clickFrames() {
         new  Actions(driver).moveToElement(driver.findElement(byFrames)).click().perform();
         return new HomePage();
     }
 
+    @Step("Click IFrames button")
     public HomePage clickIFrames() {
         new  Actions(driver).moveToElement(driver.findElement(byIFrames)).click().perform();
         return new HomePage();
     }
 
+    @Step("Click DialogBoxes button")
     public HomePage clickDialogBoxes() {
         new   Actions(driver).moveToElement(driver.findElement(byDialogBoxes)).click().perform();
         return new HomePage();
     }
 
+    @Step("Click WebStorage button")
     public HomePage clickWebStorage() {
         new   Actions(driver).moveToElement(driver.findElement(byWebStorage)).click().perform();
         return new HomePage();
     }
 
+    @Step("Click Geolocation button")
     public HomePage clickGeolocation() {
         new  Actions(driver).moveToElement(driver.findElement(byGeolocation)).click().perform();
         return new HomePage();
     }
 
+    @Step("Click Notifications button")
     public HomePage clickNotifications() {
         new  Actions(driver).moveToElement(driver.findElement(byNotifications)).click().perform();
         return new HomePage();
     }
 
+    @Step("Click GetUserMedia button")
     public HomePage clickGetUserMedia() {
         new  Actions(driver).moveToElement(driver.findElement(byGetUserMedia)).click().perform();
         return new HomePage();
     }
 
+    @Step("Click Multilanguage button")
     public HomePage clickMultilanguage() {
         new   Actions(driver).moveToElement(driver.findElement(byMultilanguage)).click().perform();
         return new HomePage();
     }
 
+    @Step("Click ConsoleLogs button")
     public HomePage clickConsoleLogs() {
         new  Actions(driver).moveToElement(driver.findElement(byConsoleLogs)).click().perform();
         return new HomePage();
     }
 
+    @Step("Click LoginForm button")
     public HomePage clickLoginForm() {
         new   Actions(driver).moveToElement(driver.findElement(byLoginForm)).click().perform();
         return new HomePage();
     }
 
+    @Step("Click SlowLogin button")
     public HomePage clickSlowLogin() {
         new Actions(driver).moveToElement(driver.findElement(bySlowLogin)).click().perform();
         return new HomePage();
     }
 
+    @Step("Click RandomCalculator button")
     public HomePage clickRandomCalculator() {
         new  Actions(driver).moveToElement(driver.findElement(byRandomCalculator)).click().perform();
         return new HomePage();
     }
 
+    @Step("Click DownloadFiles button")
     public HomePage clickDownloadFiles() {
         new   Actions(driver).moveToElement(driver.findElement(byDownloadFiles)).click().perform();
         return new HomePage();
     }
 
+    @Step("Click ABTesting button")
     public HomePage clickABTesting() {
         new   Actions(driver).moveToElement(driver.findElement(byABTesting)).click().perform();
         return new HomePage();
     }
 
+    @Step("Click DataTypes button")
     public HomePage clickDataTypes() {
         new   Actions(driver).moveToElement(driver.findElement(byDataTypes)).click().perform();
         return new HomePage();
