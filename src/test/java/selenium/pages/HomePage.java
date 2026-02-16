@@ -102,9 +102,9 @@ public class HomePage extends AbstractPage {
         return new DrawInCanvasPage();
     }
 
-    public HomePage clickLoadingImages() {
+    public LoadingImagesPage clickLoadingImages() {
         new  Actions(driver).moveToElement(driver.findElement(byLoadingImages)).click().perform();
-        return new HomePage();
+        return new LoadingImagesPage();
     }
 
     public HomePage clickSlowCalculator() {
