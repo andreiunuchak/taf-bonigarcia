@@ -16,6 +16,24 @@ public class Namespaces {
         public static final String DRAW_IN_CANVAS = "Draw in Canvas page";
         public static final String LOADING_IMAGES = "Loading Images page";
         public static final String SLOW_CALCULATOR = "Slow Calculator page";
+        public static final String LONG_PAGE = "Long page";
+        public static final String INFINITE_SCROLL = "Infinite Scroll page";
+        public static final String SHADOW_DOM = "Shadow DOM page";
+        public static final String COOKIES = "Cookies page";
+        public static final String FRAMES = "Frames page";
+        public static final String IFRAMES = "IFrames page";
+        public static final String DIALOG_BOXES = "Dialog Boxes page";
+        public static final String GEOLOCATION = "Geolocation page";
+        public static final String NOTIFICATIONS = "Notifications page";
+        public static final String GET_USER_MEDIA = "Get User Media page";
+        public static final String MULTILANGUAGE = "Multilanguage page";
+        public static final String CONSOLE_LOGS = "Console Logs page";
+        public static final String LOGIN_FORM = "Login Form page";
+        public static final String SLOW_LOGIN = "Slow Login page";
+        public static final String RANDOM_CALCULATOR = "Random Calculator page";
+        public static final String DOWNLOAD_FILES = "Download Files page";
+        public static final String AB_TESTING = "A/B Testing page";
+        public static final String DATA_TYPES  = "Data Types page";
     }
 
     public static class Tags {

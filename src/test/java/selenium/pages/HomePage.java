@@ -119,9 +119,9 @@ public class HomePage extends AbstractPage {
     }
 
     @Step("Click LongPage button")
-    public HomePage clickLongPage() {
+    public LongPage clickLongPage() {
         new  Actions(driver).moveToElement(driver.findElement(byLongPage)).click().perform();
-        return new HomePage();
+        return new LongPage();
     }
 
     @Step("Click InfiniteScroll button")
