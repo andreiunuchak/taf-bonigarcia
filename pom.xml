@@ -13,17 +13,58 @@
         <maven.compiler.target>22</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <version.selenium-java>4.40.0</version.selenium-java>
+        <version.selenium-java>4.41.0</version.selenium-java>
         <version.junit-jupiter-api>5.11.4</version.junit-jupiter-api>
-        <version.allure-junit5>2.29.1</version.allure-junit5>
-        <version.rest-assured>5.5.6</version.rest-assured>
+        <version.allure-junit5>2.33.0</version.allure-junit5>
+        <version.rest-assured>6.0.0</version.rest-assured>
         <version.owner>1.0.12</version.owner>
         <version.javafaker>1.0.2</version.javafaker>
         <version.lombok>1.18.42</version.lombok>
         <version.aspectjweaver>1.9.24</version.aspectjweaver>
+        <version.commons-lang3>3.20.0</version.commons-lang3>
+        <version.commons-codec>1.21.0</version.commons-codec>
+        <version.snakeyaml>2.5</version.snakeyaml>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${version.commons-lang3}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${version.commons-codec}</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>${version.snakeyaml}</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${version.junit-jupiter-api}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>${version.junit-jupiter-api}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
@@ -32,13 +73,11 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>${version.junit-jupiter-api}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>${version.junit-jupiter-api}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -66,9 +105,20 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
             <version>${version.javafaker}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.yaml</groupId>
+                    <artifactId>snakeyaml</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.aeonbits.owner</groupId>
