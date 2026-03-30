@@ -125,9 +125,9 @@ public class HomePage extends AbstractPage {
     }
 
     @Step("Click InfiniteScroll button")
-    public HomePage clickInfiniteScroll() {
+    public InfiniteScrollPage clickInfiniteScroll() {
         new Actions(driver).moveToElement(driver.findElement(byInfiniteScroll)).click().perform();
-        return new HomePage();
+        return new InfiniteScrollPage();
     }
 
     @Step("Click ShadowDom button")
