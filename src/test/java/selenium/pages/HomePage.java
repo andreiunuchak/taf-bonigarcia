@@ -131,9 +131,9 @@ public class HomePage extends AbstractPage {
     }
 
     @Step("Click ShadowDom button")
-    public HomePage clickShadowDom() {
+    public ShadowDOMPage clickShadowDom() {
         new  Actions(driver).moveToElement(driver.findElement(byShadowDom)).click().perform();
-        return new HomePage();
+        return new ShadowDOMPage();
     }
 
     @Step("Click Cookies button")
