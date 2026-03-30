@@ -14,7 +14,7 @@ public class InfiniteScrollPage extends AbstractPage {
 
     @Override
     @Step("Open HomePage: " + URL)
-    public AbstractPage open() {
+    public InfiniteScrollPage open() {
         driver.get(URL);
         return this;
     }
