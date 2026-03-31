@@ -143,9 +143,9 @@ public class HomePage extends AbstractPage {
     }
 
     @Step("Click Frames button")
-    public HomePage clickFrames() {
+    public FramesPage clickFrames() {
         new  Actions(driver).moveToElement(driver.findElement(byFrames)).click().perform();
-        return new HomePage();
+        return new FramesPage();
     }
 
     @Step("Click IFrames button")
