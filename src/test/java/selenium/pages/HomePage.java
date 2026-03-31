@@ -137,9 +137,9 @@ public class HomePage extends AbstractPage {
     }
 
     @Step("Click Cookies button")
-    public HomePage clickCookies() {
+    public CookiesPage clickCookies() {
         new  Actions(driver).moveToElement(driver.findElement(byCookies)).click().perform();
-        return new HomePage();
+        return new CookiesPage();
     }
 
     @Step("Click Frames button")
