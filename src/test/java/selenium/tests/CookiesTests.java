@@ -1,11 +1,13 @@
 package selenium.tests;
 
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;
 import selenium.annotations.Headless;
+import selenium.constants.Namespaces;
 import selenium.pages.CookiesPage;
 import selenium.pages.HomePage;
 
@@ -13,6 +15,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Headless
+@Story(Namespaces.Stories.COOKIES)
 public class CookiesTests extends BaseTest {
     private CookiesPage cookiesPage;
 
