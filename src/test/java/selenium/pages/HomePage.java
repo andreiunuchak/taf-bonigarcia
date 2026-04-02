@@ -145,9 +145,9 @@ public class HomePage extends AbstractPage {
     }
 
     @Step("Click IFrames button")
-    public HomePage clickIFrames() {
+    public IFramesPage clickIFrames() {
         new  Actions(driver).moveToElement(driver.findElement(byIFrames)).click().perform();
-        return new HomePage();
+        return new IFramesPage();
     }
 
     @Step("Click DialogBoxes button")

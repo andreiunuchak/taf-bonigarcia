@@ -32,7 +32,7 @@ public class NavigationTests extends BaseTest {
     }
 
     @ParameterizedTest
-    @MethodSource("pageProvider")
+    @MethodSource("selenium.utils.TestDataProvider#navigationPageTestData")
     @DisplayName("Validate description and paginator states on the each page of Navigation")
     public void testNavigationPageStates(int pageNumber, boolean expectedPreviousState, boolean expectedNextState, String expectedDescription) throws InterruptedException {
         navigationPage.selectPage(pageNumber);
@@ -62,13 +62,5 @@ public class NavigationTests extends BaseTest {
     public void testNavigationBackToIndex() {
         navigationPage.clickBackToIndex();
         Assertions.assertEquals(new HomePage().URL + "index.html", driver.getCurrentUrl(), "Incorrect url");
-    }
-
-    private static Stream<Arguments> pageProvider() {
-        return Stream.of(
-                Arguments.of(1, true, false, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."),
-                Arguments.of(2, false, false, "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."),
-                Arguments.of(3, false, true, "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
-        );
     }
 }
