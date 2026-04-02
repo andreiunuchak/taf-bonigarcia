@@ -151,9 +151,9 @@ public class HomePage extends AbstractPage {
     }
 
     @Step("Click DialogBoxes button")
-    public HomePage clickDialogBoxes() {
+    public DialogBoxesPage clickDialogBoxes() {
         new   Actions(driver).moveToElement(driver.findElement(byDialogBoxes)).click().perform();
-        return new HomePage();
+        return new DialogBoxesPage();
     }
 
     @Step("Click WebStorage button")

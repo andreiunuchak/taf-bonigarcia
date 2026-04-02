@@ -27,6 +27,14 @@ public class Waiters {
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
+    public WebElement waitUntilElementVisible(By locator) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public Boolean waitUntilElementInvisible(By locator) {
+        return wait.until(ExpectedConditions.not(ExpectedConditions.visibilityOfElementLocated(locator)));
+    }
+
     public Boolean waitUntilElementRemoved(By locator) {
         try {
             wait.until(ExpectedConditions.presenceOfElementLocated(locator));
