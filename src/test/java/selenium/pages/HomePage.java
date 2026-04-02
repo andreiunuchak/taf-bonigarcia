@@ -43,10 +43,6 @@ public class HomePage extends AbstractPage {
     private final By byABTesting = By.xpath("//a[@href='ab-testing.html']");
     private final By byDataTypes = By.xpath("//a[@href='data-types.html']");
 
-    public HomePage() {
-        super();
-    }
-
     @Override
     @Step("Open HomePage: " + URL)
     public HomePage open() {

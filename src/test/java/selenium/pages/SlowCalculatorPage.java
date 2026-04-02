@@ -9,8 +9,7 @@ import selenium.utils.Waiters;
 import java.time.Duration;
 
 public class SlowCalculatorPage extends AbstractPage {
-
-    private final static String URL = "https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html";
+    private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byDelay = By.id("delay");
     private final By byKeys = By.xpath("//div[@class='keys']");

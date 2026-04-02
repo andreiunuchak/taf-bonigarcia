@@ -6,7 +6,6 @@ import org.openqa.selenium.interactions.Actions;
 import selenium.utils.Waiters;
 
 public class DropdownMenuPage extends AbstractPage {
-
     private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/dropdown-menu.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byLeftClickDropdown = By.id("my-dropdown-1");
@@ -24,10 +23,6 @@ public class DropdownMenuPage extends AbstractPage {
     private final By byDoubleClickDropdown_AnotherAction = By.xpath("(//ul[@id='context-menu-3']/li/a)[2]");
     private final By byDoubleClickDropdown_SomethingElseHere = By.xpath("(//ul[@id='context-menu-3']/li/a)[3]");
     private final By byDoubleClickDropdown_SeparatedLink = By.xpath("(//ul[@id='context-menu-3']/li/a)[4]");
-
-    public DropdownMenuPage() {
-        super();
-    }
 
     @Override
     @Step("Open DropdownMenuPage: " + URL)

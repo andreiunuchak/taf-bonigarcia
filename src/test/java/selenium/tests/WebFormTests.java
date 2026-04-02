@@ -23,7 +23,7 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
-    @DisplayName("Validate Title on the WebFrom page")
+    @DisplayName("Validate Title on the WebForm page")
     public void testWebFormTitle() {
         String expectedTitle = "Web form";
         String actualTitle = webForm.getTitle();
@@ -31,7 +31,7 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
-    @DisplayName("Validate TextInput field behavior on the WebFrom page")
+    @DisplayName("Validate TextInput field behavior on the WebForm page")
     public void testWebFormTextInput() {
         String expectedText = "Web form";
         webForm.inputTextInput(expectedText);
@@ -40,7 +40,7 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
-    @DisplayName("Validate Password field behavior on the WebFrom page")
+    @DisplayName("Validate Password field behavior on the WebForm page")
     public void testWebFormPassword() {
         String expectedText = "p4$$w0rd";
         webForm.inputPassword(expectedText);
@@ -49,7 +49,7 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
-    @DisplayName("Validate TextArea field behavior on the WebFrom page")
+    @DisplayName("Validate TextArea field behavior on the WebForm page")
     public void testWebFormTextArea() {
         String expectedText = """
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed ultricies elit, tincidunt vestibulum sem. In hac habitasse platea dictumst. Nam eleifend dui diam, eget rutrum nulla sagittis quis. Suspendisse malesuada nisi pulvinar ligula varius, sed euismod dui luctus. Curabitur dictum hendrerit est, ut elementum erat. Quisque erat nisi, dignissim id efficitur ut, faucibus ut ipsum. Nunc at semper orci. Donec sed iaculis est, vitae pellentesque magna. Nam eget velit ac nisl ullamcorper sodales id eu mi. Donec rutrum justo odio, at laoreet dui molestie vel. Phasellus tincidunt sapien nibh, vel tincidunt dui blandit sed. Aenean a enim sapien. Aliquam mi diam, faucibus vel lacinia ut, vehicula ut elit.
@@ -64,7 +64,7 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
-    @DisplayName("Validate DisabledInput field behavior on the WebFrom page")
+    @DisplayName("Validate DisabledInput field behavior on the WebForm page")
     public void testWebFormDisabledInput() {
         String expectedText = "Disabled input";
         String inputText = "Web form";
@@ -76,7 +76,7 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
-    @DisplayName("Validate ReadonlyInput field behavior on the WebFrom page")
+    @DisplayName("Validate ReadonlyInput field behavior on the WebForm page")
     public void testWebFormReadonlyInput() {
         String expectedText = "Readonly input";
         String inputText = "Web form";
@@ -86,7 +86,7 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
-    @DisplayName("Validate Dropdown(Select) field behavior on the WebFrom page")
+    @DisplayName("Validate Dropdown(Select) field behavior on the WebForm page")
     public void testWebFormDropdownSelect() {
         String expectedText = "Two";
         webForm.selectDropdownSelect(2);
@@ -95,7 +95,7 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
-    @DisplayName("Validate Dropdown(Datalist) field behavior on the WebFrom page")
+    @DisplayName("Validate Dropdown(Datalist) field behavior on the WebForm page")
     public void testWebFormDropdownDatalist() {
         String expectedText = "Poland";
         webForm.inputDropdownDatalist(expectedText);
@@ -104,7 +104,7 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
-    @DisplayName("Validate FileInput field behavior on the WebFrom page")
+    @DisplayName("Validate FileInput field behavior on the WebForm page")
     public void testWebFormFileInput() throws URISyntaxException {
         String expectedText = "SeleniumImage.png";
         String filePath = Paths.get(ClassLoader.getSystemResource(expectedText).toURI()).toFile().getAbsolutePath();
@@ -114,7 +114,7 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
-    @DisplayName("Validate Checkbox field behavior on the WebFrom page")
+    @DisplayName("Validate Checkbox field behavior on the WebForm page")
     public void testWebFormCheckbox() {
         webForm.markDefaultCheckbox();
         Assertions.assertAll(
@@ -130,7 +130,7 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
-    @DisplayName("Validate Radio field behavior on the WebFrom page")
+    @DisplayName("Validate Radio field behavior on the WebForm page")
     public void testWebFormRadio() {
         webForm.markDefaultRadio();
         Assertions.assertAll(
@@ -145,7 +145,7 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
-    @DisplayName("Validate Submit button behavior on the WebFrom page")
+    @DisplayName("Validate Submit button behavior on the WebForm page")
     public void testWebFormSubmit() {
         webForm.clickSubmit();
         Assertions.assertAll(
@@ -155,7 +155,7 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
-    @DisplayName("Validate ColorPicker field behavior on the WebFrom page")
+    @DisplayName("Validate ColorPicker field behavior on the WebForm page")
     public void testWebFormColorPicker() {
         String expectedColor = "#00ff00";
         webForm.pickColorPicker(expectedColor);
@@ -163,7 +163,7 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
-    @DisplayName("Validate DatePicker field behavior on the WebFrom page")
+    @DisplayName("Validate DatePicker field behavior on the WebForm page")
     public void testWebFormDatePicker() {
         String expectedDate = "03/21/1989";
         webForm.inputDatePicker(expectedDate);
@@ -171,7 +171,7 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
-    @DisplayName("Validate ExampleSlider field behavior on the WebFrom page")
+    @DisplayName("Validate ExampleSlider field behavior on the WebForm page")
     public void testWebFormExampleSlider() {
         int expectedPosition = 2;
         webForm.slideExampleRange(expectedPosition);
@@ -179,7 +179,7 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
-    @DisplayName("Validate ReturnToIndex button behavior on the WebFrom page")
+    @DisplayName("Validate ReturnToIndex button behavior on the WebForm page")
     public void testWebFormReturnToIndex() {
         webForm.clickReturnToIndex();
         Assertions.assertEquals(new HomePage().URL + "index.html", driver.getCurrentUrl());

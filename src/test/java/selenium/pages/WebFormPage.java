@@ -11,7 +11,6 @@ import selenium.utils.Waiters;
 import java.util.Objects;
 
 public class WebFormPage extends AbstractPage {
-
     private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/web-form.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byTextInput = By.id("my-text-id");
@@ -33,10 +32,6 @@ public class WebFormPage extends AbstractPage {
     private final By byDatePicker = By.name("my-date");
     private final By byExampleRange = By.name("my-range");
     private final By byReturnToIndex = By.xpath("//div[@class='form-group tp-align-right mt-3']");
-
-    public WebFormPage() {
-        super();
-    }
 
     @Override
     @Step("Open WebFormPage: " + URL)

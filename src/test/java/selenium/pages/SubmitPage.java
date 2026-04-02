@@ -5,10 +5,8 @@ import org.openqa.selenium.By;
 import selenium.utils.Waiters;
 
 public class SubmitPage extends AbstractPage {
-
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byDescription = By.xpath("//p");
-
     private final Waiters waiters;
 
     public SubmitPage() {

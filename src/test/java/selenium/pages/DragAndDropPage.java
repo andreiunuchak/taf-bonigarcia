@@ -7,12 +7,10 @@ import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.interactions.Actions;
 
 public class DragAndDropPage extends AbstractPage {
-
     private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/drag-and-drop.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byDragElement = By.id("draggable");
     private final By byDropElement = By.id("target");
-
 
     @Override
     @Step("Open DragAndDropPage:" + URL)

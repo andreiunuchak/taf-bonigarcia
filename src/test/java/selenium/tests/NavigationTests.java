@@ -58,7 +58,7 @@ public class NavigationTests extends BaseTest {
     }
 
     @Test
-    @DisplayName("Validate ReturnToIndex button behavior on the WebFrom page")
+    @DisplayName("Validate ReturnToIndex button behavior on the Navigation page")
     public void testNavigationBackToIndex() {
         navigationPage.clickBackToIndex();
         Assertions.assertEquals(new HomePage().URL + "index.html", driver.getCurrentUrl(), "Incorrect url");

@@ -8,12 +8,12 @@ import org.openqa.selenium.interactions.Actions;
 import java.util.List;
 
 public class InfiniteScrollPage extends AbstractPage {
-    public final String URL = "https://bonigarcia.dev/selenium-webdriver-java/";
+    private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byParagraph = By.xpath("//div[@class='row']//p");
 
     @Override
-    @Step("Open HomePage: " + URL)
+    @Step("Open InfiniteScrollPage: " + URL)
     public InfiniteScrollPage open() {
         driver.get(URL);
         return this;

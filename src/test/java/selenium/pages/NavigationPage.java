@@ -6,8 +6,7 @@ import org.openqa.selenium.By;
 import java.util.Objects;
 
 public class NavigationPage extends AbstractPage {
-
-    public static final String URL = "https://bonigarcia.dev/selenium-webdriver-java/navigation1.html";
+    private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/navigation1.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byDescription = By.xpath("//p");
     private final By byPrevious = By.xpath("//ul[@class='pagination']/li[1]");

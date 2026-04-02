@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
 
 public class MouseOverPage extends AbstractPage {
-
     private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/mouse-over.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byCompassImage = By.xpath("//img[@src='img/compass.png']");

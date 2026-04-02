@@ -8,7 +8,6 @@ import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.interactions.Actions;
 
 public class DrawInCanvasPage extends AbstractPage {
-
     private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/draw-in-canvas.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byDescription = By.xpath("//p");

@@ -1,10 +1,12 @@
 package selenium.tests;
 
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import selenium.annotations.Headless;
+import selenium.constants.Namespaces;
 import selenium.pages.FramesPage;
 import selenium.pages.HomePage;
 
@@ -12,6 +14,7 @@ import java.util.List;
 import java.util.Random;
 
 @Headless
+@Story(Namespaces.Stories.FRAMES)
 public class FramesTests extends BaseTest {
     private FramesPage framesPage;
 

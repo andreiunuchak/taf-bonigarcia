@@ -15,7 +15,7 @@ public class CookiesPage extends AbstractPage {
     private final By byCookiesList = By.id("cookies-list");
 
     @Override
-    @Step("Open DragAndDropPage:" + URL)
+    @Step("Open Cookies:" + URL)
     public CookiesPage open() {
         driver.get(URL);
         return this;

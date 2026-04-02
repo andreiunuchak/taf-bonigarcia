@@ -8,7 +8,6 @@ import selenium.utils.Waiters;
 
 
 public class LoadingImagesPage extends AbstractPage {
-
     private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/loading-images.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byStatus = By.id("text");
@@ -20,7 +19,7 @@ public class LoadingImagesPage extends AbstractPage {
 
     @Override
     @Step("Open LoadingImagesPage: " + URL)
-    public AbstractPage open() {
+    public LoadingImagesPage open() {
         driver.get(URL);
         return this;
     }
