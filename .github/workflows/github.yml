@@ -1,0 +1,108 @@
+name: Prod Java Selenium Allure Tests
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Set up JDK 22
+        uses: actions/setup-java@v4
+        with:
+          java-version: '22'
+          distribution: 'temurin'
+          cache: 'maven'
+      - name: Cache Maven dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+      - name: Build Project
+        run: mvn clean package -DskipTests
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: prod
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    services:
+      selenium:
+        image: selenium/standalone-chrome:latest
+        options: --shm-size 2g
+        ports:
+          - 4444:4444
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Set up JDK 22
+        uses: actions/setup-java@v4
+        with:
+          java-version: '22'
+          distribution: 'temurin'
+          cache: 'maven'
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install Allure CLI
+        run: npm install -g allure-commandline --unsafe-perm=true
+      - name: Run Maven Tests with Allure
+        continue-on-error: true
+        env:
+          SELENIUM_REMOTE_URL: http://localhost:4444/wd/hub
+        run: mvn clean test -Dmaven.test.failure.ignore=true
+      - name: Check Test Failure Percentage
+        if: always()
+        run: |
+          TOTAL=$(grep -h "testsuite" target/surefire-reports/TEST-*.xml | sed -n 's/.*tests="\([^"]*\)".*/\1/p' | awk '{s+=$1} END {print s+0}')
+          FAILURES=$(grep -h "testsuite" target/surefire-reports/TEST-*.xml | sed -n 's/.*failures="\([^"]*\)".*/\1/p' | awk '{s+=$1} END {print s+0}')
+          ERRORS=$(grep -h "testsuite" target/surefire-reports/TEST-*.xml | sed -n 's/.*errors="\([^"]*\)".*/\1/p' | awk '{s+=$1} END {print s+0}')
+          TOTAL_FAILED=$((FAILURES + ERRORS))
+          echo "Debug Info:"
+          echo "Total detected: $TOTAL"
+          echo "Failures detected: $FAILURES"
+          echo "Errors detected: $ERRORS"
+          if [ "$TOTAL" -eq 0 ]; then
+            echo "Error: Total tests count is 0. Check report paths."
+            exit 1
+          fi
+          PERCENT=$((TOTAL_FAILED * 100 / TOTAL))
+          echo "Final Calculation: $TOTAL_FAILED / $TOTAL = $PERCENT%"
+          if [ "$PERCENT" -gt 10 ]; then
+            echo "Failure rate $PERCENT% is above 10% threshold. Failing build."
+            exit 1
+          else
+            echo "Failure rate $PERCENT% is within limits. Proceeding."
+          fi
+      - name: Upload Allure Results as Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: target/allure-results
+      - name: Generate Allure Report
+        if: always()
+        run: allure generate --clean target/allure-results -o target/allure-report
+      - name: Upload Allure Report as Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: target/allure-report
