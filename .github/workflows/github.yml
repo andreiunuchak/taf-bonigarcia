@@ -68,6 +68,7 @@ jobs:
           SELENIUM_REMOTE_URL: http://localhost:4444/wd/hub
         run: mvn clean test -Dmaven.test.failure.ignore=true
       - name: Check Test Failure Percentage
+        if: always()
         run: |
           TOTAL=$(grep -h "testsuite" target/surefire-reports/TEST-*.xml | sed -n 's/.*tests="\([^"]*\)".*/\1/p' | awk '{s+=$1} END {print s+0}')
           FAILURES=$(grep -h "testsuite" target/surefire-reports/TEST-*.xml | sed -n 's/.*failures="\([^"]*\)".*/\1/p' | awk '{s+=$1} END {print s+0}')
