@@ -44,7 +44,7 @@ jobs:
       id-token: write
     services:
       selenium:
-        image: selenium/standalone-chrome:146.0
+        image: selenium/standalone-chrome:145.0
         options: --shm-size 2g
         ports:
           - 4444:4444
