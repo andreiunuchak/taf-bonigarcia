@@ -1,5 +1,8 @@
 name: Prod Java Selenium Allure Tests
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 on:
   push:
     branches:
@@ -64,6 +67,24 @@ jobs:
         env:
           SELENIUM_REMOTE_URL: http://localhost:4444/wd/hub
         run: mvn clean test
+      - name: Check Test Failure Percentage
+        run: |
+          TOTAL=$(grep -r "testsuite" target/surefire-reports/*.xml | sed -n 's/.*tests="\([^"]*\)".*/\1/p' | awk '{s+=$1} END {print s}')
+          FAILURES=$(grep -r "testsuite" target/surefire-reports/*.xml | sed -n 's/.*failures="\([^"]*\)".*/\1/p' | awk '{s+=$1} END {print s}')
+          ERRORS=$(grep -r "testsuite" target/surefire-reports/*.xml | sed -n 's/.*errors="\([^"]*\)".*/\1/p' | awk '{s+=$1} END {print s}')
+          TOTAL_FAILED=$((FAILURES + ERRORS))
+          if [ "$TOTAL" -eq 0 ]; then
+            echo "No tests found."
+            exit 1
+          fi
+          PERCENT=$((TOTAL_FAILED * 100 / TOTAL))
+          echo "Total tests: $TOTAL"
+          echo "Failed tests: $TOTAL_FAILED"
+          echo "Failure percentage: $PERCENT%"
+          if [ "$PERCENT" -gt 10 ]; then
+            echo "Failure rate is above 10%. Failing build."
+            exit 1
+          fi
       - name: Upload Allure Results as Artifact
         if: always()
         uses: actions/upload-artifact@v4

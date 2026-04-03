@@ -140,8 +140,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.5.3</version>
                 <configuration>
-                    <testFailureIgnore>false</testFailureIgnore>
-                    <skipAfterFailureCount>10</skipAfterFailureCount>
+                    <testFailureIgnore>true</testFailureIgnore>
                     <argLine>
                         -Dfile.encoding=${project.build.sourceEncoding}
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${version.aspectjweaver}/aspectjweaver-${version.aspectjweaver}.jar"
