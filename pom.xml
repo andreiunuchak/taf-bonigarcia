@@ -141,6 +141,7 @@
                 <version>3.5.3</version>
                 <configuration>
                     <testFailureIgnore>false</testFailureIgnore>
+                    <skipAfterFailureCount>10</skipAfterFailureCount>
                     <argLine>
                         -Dfile.encoding=${project.build.sourceEncoding}
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${version.aspectjweaver}/aspectjweaver-${version.aspectjweaver}.jar"
