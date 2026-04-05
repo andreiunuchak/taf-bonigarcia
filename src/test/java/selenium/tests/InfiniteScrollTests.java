@@ -1,10 +1,9 @@
 package selenium.tests;
 
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.interactions.Actions;
@@ -24,6 +23,8 @@ public class InfiniteScrollTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.MINOR)
+    @Tag(Namespaces.Severity.MINOR)
     @DisplayName("Validate Title on the InfiniteScroll page")
     public void testHomeTitle() {
         Assertions.assertEquals("Infinite scroll", infiniteScrollPage.getTitle());
@@ -31,6 +32,8 @@ public class InfiniteScrollTests extends BaseTest {
 
     @ParameterizedTest
     @MethodSource("selenium.utils.TestDataProvider#paragraphsTestData")
+    @Severity(SeverityLevel.NORMAL)
+    @Tag(Namespaces.Severity.MEDIUM)
     @DisplayName("Validate paragraph text on the InfiniteScroll page")
     public void testInfinitePageParagraphsTexts(int id, String expectedText) {
         Assertions.assertAll(
@@ -40,6 +43,8 @@ public class InfiniteScrollTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Tag(Namespaces.Severity.CRITICAL)
     @DisplayName("Validate scroll on the InfiniteScroll page")
     public void testInfinitePageScrollBehavior() {
         int amountOfParagraphsBefore = infiniteScrollPage.getParagraphsAmount();

@@ -1,10 +1,9 @@
 package selenium.tests;
 
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.Cookie;
 import selenium.annotations.Headless;
 import selenium.constants.Namespaces;
@@ -25,12 +24,16 @@ public class CookiesTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.MINOR)
+    @Tag(Namespaces.Severity.MINOR)
     @DisplayName("Validate the title on the Cookies page")
     public void testNavigationTitle() {
         Assertions.assertEquals("Cookies", cookiesPage.getTitle());
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Tag(Namespaces.Severity.CRITICAL)
     @DisplayName("Validate default Cookies")
     public void testDefaultCookies() {
         Set<Cookie> uiCookiesList = cookiesPage.clickDisplayCookies()
@@ -42,6 +45,8 @@ public class CookiesTests extends BaseTest {
 
     @Test
     @DisplayName("Validate adding Cookies")
+    @Severity(SeverityLevel.CRITICAL)
+    @Tag(Namespaces.Severity.CRITICAL)
     public void testAddCookies() {
         Cookie addCookie = new Cookie("newCookieName", "newCookieValue");
         Set<Cookie> uiCookiesList = cookiesPage
@@ -57,6 +62,8 @@ public class CookiesTests extends BaseTest {
 
     @Test
     @DisplayName("Validate deleting Cookies")
+    @Severity(SeverityLevel.NORMAL)
+    @Tag(Namespaces.Severity.MEDIUM)
     public void testDeleteCookies() {
         Cookie deleteCookie = cookiesPage.clickDisplayCookies().getUICookiesList().stream().toList().getFirst();
         Set<Cookie> uiCookiesList = cookiesPage

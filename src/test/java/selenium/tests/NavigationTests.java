@@ -1,19 +1,15 @@
 package selenium.tests;
 
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import selenium.annotations.Headless;
 import selenium.constants.Namespaces;
 import selenium.pages.HomePage;
 import selenium.pages.NavigationPage;
-
-import java.util.stream.Stream;
 
 @Headless
 @Story(Namespaces.Stories.NAVIGATION)
@@ -26,6 +22,8 @@ public class NavigationTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.MINOR)
+    @Tag(Namespaces.Severity.MINOR)
     @DisplayName("Validate the title on the Navigation page")
     public void testNavigationTitle() {
         Assertions.assertEquals("Navigation example", navigationPage.getTitle());
@@ -33,8 +31,10 @@ public class NavigationTests extends BaseTest {
 
     @ParameterizedTest
     @MethodSource("selenium.utils.TestDataProvider#navigationPageTestData")
+    @Severity(SeverityLevel.CRITICAL)
+    @Tag(Namespaces.Severity.CRITICAL)
     @DisplayName("Validate description and paginator states on the each page of Navigation")
-    public void testNavigationPageStates(int pageNumber, boolean expectedPreviousState, boolean expectedNextState, String expectedDescription) throws InterruptedException {
+    public void testNavigationPageStates(int pageNumber, boolean expectedPreviousState, boolean expectedNextState, String expectedDescription) {
         navigationPage.selectPage(pageNumber);
         Assertions.assertAll(
                 () -> Assertions.assertEquals(expectedPreviousState, navigationPage.isPreviousDisabled(), "Incorrect previous state"),
@@ -45,6 +45,8 @@ public class NavigationTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Tag(Namespaces.Severity.MEDIUM)
     @DisplayName("Validate Next and Previous buttons behavior on the Navigation page")
     public void testNavigationPreviousNext() {
         navigationPage.clickNext();
@@ -58,6 +60,8 @@ public class NavigationTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Tag(Namespaces.Severity.MEDIUM)
     @DisplayName("Validate ReturnToIndex button behavior on the Navigation page")
     public void testNavigationBackToIndex() {
         navigationPage.clickBackToIndex();

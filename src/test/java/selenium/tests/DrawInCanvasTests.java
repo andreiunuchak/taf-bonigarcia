@@ -1,10 +1,9 @@
 package selenium.tests;
 
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.Point;
 import selenium.annotations.Headed;
 import selenium.annotations.Headless;
@@ -28,12 +27,16 @@ public class DrawInCanvasTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.MINOR)
+    @Tag(Namespaces.Severity.MINOR)
     @DisplayName("Validate the title on the DropdownMenu page")
     public void testDrawInCanvasTitle() {
         Assertions.assertEquals("Drawing in canvas", drawInCanvasPage.getTitle());
     }
 
     @Test
+    @Severity(SeverityLevel.MINOR)
+    @Tag(Namespaces.Severity.MINOR)
     @DisplayName("Validate the description on the DrawInCanvas page")
     public void testDrawInCanvasDescription() {
         Assertions.assertEquals("Click to draw.", drawInCanvasPage.getDescription());
@@ -41,6 +44,9 @@ public class DrawInCanvasTests extends BaseTest {
 
     @Test
     @Headed
+    @Severity(SeverityLevel.CRITICAL)
+    @Tag(Namespaces.Severity.CRITICAL)
+    @Tag(Namespaces.Tags.FLAKY)
     @DisplayName("Validate drawing in the canvas")
     public void testDrawInCanvasBehaviour() {
         Point startPoint = new Point(10, 50);

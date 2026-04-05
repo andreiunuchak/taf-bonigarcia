@@ -1,12 +1,10 @@
 package selenium.tests;
 
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import selenium.annotations.Headless;
 import selenium.constants.Namespaces;
@@ -14,7 +12,6 @@ import selenium.pages.HomePage;
 import selenium.pages.SlowCalculatorPage;
 
 import java.util.Random;
-import java.util.stream.Stream;
 
 @Headless
 @Story(Namespaces.Stories.SLOW_CALCULATOR)
@@ -28,6 +25,8 @@ public class SlowCalculatorTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.MINOR)
+    @Tag(Namespaces.Severity.MINOR)
     @DisplayName("Validate the title on the SlowCalculator page")
     public void testNavigationTitle() {
         Assertions.assertEquals("Slow calculator", slowCalculatorPage.getTitle());
@@ -35,6 +34,8 @@ public class SlowCalculatorTests extends BaseTest {
 
     @ParameterizedTest
     @MethodSource("selenium.utils.TestDataProvider#mathCalculationsTestData")
+    @Severity(SeverityLevel.CRITICAL)
+    @Tag(Namespaces.Severity.CRITICAL)
     @DisplayName("Test calculation operations")
     public void testCalculateOperation(String operation, String expectedResult) {
         Assertions.assertEquals(expectedResult, slowCalculatorPage.calcOperation(operation).waitForCalculationEnd().getResult());
@@ -42,6 +43,8 @@ public class SlowCalculatorTests extends BaseTest {
 
     @ParameterizedTest
     @MethodSource("selenium.utils.TestDataProvider#mathCalculationsTestData")
+    @Severity(SeverityLevel.NORMAL)
+    @Tag(Namespaces.Severity.MEDIUM)
     @DisplayName("Test calculation operations with various delays")
     public void testCalculateOperationWithDelays(String operation, String expectedResult) {
         int delay = new Random().nextInt(1, 15);
@@ -53,6 +56,8 @@ public class SlowCalculatorTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Tag(Namespaces.Severity.CRITICAL)
     @DisplayName("Test cleaning result field")
     public void testClearField() {
         slowCalculatorPage.calcOperation("2+2");
