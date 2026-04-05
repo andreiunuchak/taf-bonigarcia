@@ -1,5 +1,7 @@
 package selenium.tests;
 
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 import selenium.annotations.Headless;
@@ -19,12 +21,16 @@ public class LoadingImagesTests extends BaseTest{
     }
 
     @Test
+    @Severity(SeverityLevel.MINOR)
+    @Tag(Namespaces.Severity.MINOR)
     @DisplayName("Validate the title on the LoadingImages page")
     public void testLoadingImagesTitle() {
         Assertions.assertEquals("Loading images", loadingImagesPage.getTitle());
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Tag(Namespaces.Severity.NORMAL)
     @DisplayName("Validate status texts on the LoadingImages page")
     public void testLoadingImagesStatus() {
         Assertions.assertAll(
@@ -39,6 +45,8 @@ public class LoadingImagesTests extends BaseTest{
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Tag(Namespaces.Severity.CRITICAL)
     @DisplayName("Validate images appearance on the LoadingImages page")
     public void testLoadingImagesAppearance() {
         loadingImagesPage.waitForLoadingToComplete();

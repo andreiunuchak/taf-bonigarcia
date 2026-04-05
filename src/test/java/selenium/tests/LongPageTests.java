@@ -1,10 +1,9 @@
 package selenium.tests;
 
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import selenium.annotations.Headless;
@@ -26,6 +25,8 @@ public class LongPageTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.MINOR)
+    @Tag(Namespaces.Severity.MINOR)
     @DisplayName("Validate Title on the Long page")
     public void testHomeTitle(){
         Assertions.assertEquals("This is a long page", longPage.getTitle());
@@ -33,6 +34,8 @@ public class LongPageTests extends BaseTest {
 
     @ParameterizedTest
     @MethodSource("selenium.utils.TestDataProvider#paragraphsTestData")
+    @Severity(SeverityLevel.NORMAL)
+    @Tag(Namespaces.Severity.NORMAL)
     @DisplayName("Validate paragraph text")
     public void testLongPageParagraphsTexts(int id, String expectedText) {
         Assertions.assertAll(
@@ -42,6 +45,8 @@ public class LongPageTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Tag(Namespaces.Severity.CRITICAL)
     @DisplayName("Validate scroll on the LongPage")
     public void testLongPageScrollBehavior() {
         int id = new Random().nextInt(longPage.getParagraphsAmount() / 2, longPage.getParagraphsAmount() + 1);

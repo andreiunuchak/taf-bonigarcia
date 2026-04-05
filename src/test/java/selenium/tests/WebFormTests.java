@@ -1,5 +1,7 @@
 package selenium.tests;
 
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.ElementNotInteractableException;
@@ -23,6 +25,8 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.MINOR)
+    @Tag(Namespaces.Severity.MINOR)
     @DisplayName("Validate Title on the WebForm page")
     public void testWebFormTitle() {
         String expectedTitle = "Web form";
@@ -31,6 +35,8 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Tag(Namespaces.Severity.NORMAL)
     @DisplayName("Validate TextInput field behavior on the WebForm page")
     public void testWebFormTextInput() {
         String expectedText = "Web form";
@@ -40,6 +46,8 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Tag(Namespaces.Severity.NORMAL)
     @DisplayName("Validate Password field behavior on the WebForm page")
     public void testWebFormPassword() {
         String expectedText = "p4$$w0rd";
@@ -49,6 +57,8 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Tag(Namespaces.Severity.NORMAL)
     @DisplayName("Validate TextArea field behavior on the WebForm page")
     public void testWebFormTextArea() {
         String expectedText = """
@@ -64,6 +74,8 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Tag(Namespaces.Severity.NORMAL)
     @DisplayName("Validate DisabledInput field behavior on the WebForm page")
     public void testWebFormDisabledInput() {
         String expectedText = "Disabled input";
@@ -76,6 +88,8 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Tag(Namespaces.Severity.NORMAL)
     @DisplayName("Validate ReadonlyInput field behavior on the WebForm page")
     public void testWebFormReadonlyInput() {
         String expectedText = "Readonly input";
@@ -86,6 +100,8 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Tag(Namespaces.Severity.NORMAL)
     @DisplayName("Validate Dropdown(Select) field behavior on the WebForm page")
     public void testWebFormDropdownSelect() {
         String expectedText = "Two";
@@ -95,6 +111,8 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Tag(Namespaces.Severity.NORMAL)
     @DisplayName("Validate Dropdown(Datalist) field behavior on the WebForm page")
     public void testWebFormDropdownDatalist() {
         String expectedText = "Poland";
@@ -104,6 +122,8 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Tag(Namespaces.Severity.NORMAL)
     @DisplayName("Validate FileInput field behavior on the WebForm page")
     public void testWebFormFileInput() throws URISyntaxException {
         String expectedText = "SeleniumImage.png";
@@ -114,6 +134,8 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Tag(Namespaces.Severity.NORMAL)
     @DisplayName("Validate Checkbox field behavior on the WebForm page")
     public void testWebFormCheckbox() {
         webForm.markDefaultCheckbox();
@@ -130,6 +152,8 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Tag(Namespaces.Severity.NORMAL)
     @DisplayName("Validate Radio field behavior on the WebForm page")
     public void testWebFormRadio() {
         webForm.markDefaultRadio();
@@ -145,6 +169,8 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Tag(Namespaces.Severity.CRITICAL)
     @DisplayName("Validate Submit button behavior on the WebForm page")
     public void testWebFormSubmit() {
         webForm.clickSubmit();
@@ -155,6 +181,8 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Tag(Namespaces.Severity.NORMAL)
     @DisplayName("Validate ColorPicker field behavior on the WebForm page")
     public void testWebFormColorPicker() {
         String expectedColor = "#00ff00";
@@ -163,6 +191,8 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Tag(Namespaces.Severity.NORMAL)
     @DisplayName("Validate DatePicker field behavior on the WebForm page")
     public void testWebFormDatePicker() {
         String expectedDate = "03/21/1989";
@@ -171,6 +201,8 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Tag(Namespaces.Severity.NORMAL)
     @DisplayName("Validate ExampleSlider field behavior on the WebForm page")
     public void testWebFormExampleSlider() {
         int expectedPosition = 2;
@@ -179,6 +211,8 @@ public class WebFormTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Tag(Namespaces.Severity.NORMAL)
     @DisplayName("Validate ReturnToIndex button behavior on the WebForm page")
     public void testWebFormReturnToIndex() {
         webForm.clickReturnToIndex();

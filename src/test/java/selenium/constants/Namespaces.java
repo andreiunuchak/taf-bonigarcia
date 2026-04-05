@@ -33,7 +33,7 @@ public class Namespaces {
         public static final String RANDOM_CALCULATOR = "Random Calculator page";
         public static final String DOWNLOAD_FILES = "Download Files page";
         public static final String AB_TESTING = "A/B Testing page";
-        public static final String DATA_TYPES  = "Data Types page";
+        public static final String DATA_TYPES = "Data Types page";
     }
 
     public static class Tags {
@@ -42,5 +42,14 @@ public class Namespaces {
         public static final String SMOKE = "smoke";
         public static final String REGRESSION = "regression";
         public static final String DEBUG = "debug";
+        public static final String FLAKY = "flaky";
+    }
+
+    public static class Severity {
+        public static final String BLOCKER = "blocker";
+        public static final String CRITICAL = "critical";
+        public static final String NORMAL = "normal";
+        public static final String MINOR = "minor";
+        public static final String TRIVIAL = "trivial";
     }
 }

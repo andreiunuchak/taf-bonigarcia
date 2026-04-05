@@ -1,10 +1,9 @@
 package selenium.tests;
 
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import selenium.annotations.Headless;
 import selenium.constants.Namespaces;
 import selenium.pages.FramesPage;
@@ -24,12 +23,16 @@ public class FramesTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.MINOR)
+    @Tag(Namespaces.Severity.MINOR)
     @DisplayName("Validate the title on the Frames page")
     public void testTitle() {
         Assertions.assertEquals("Frames", framesPage.getTitle());
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Tag(Namespaces.Severity.CRITICAL)
     @DisplayName("Validate the texts on the Frames page")
     public void testFrameTexts() {
         List<String> actualTexts = framesPage.getParagraphsTexts();
@@ -60,6 +63,8 @@ public class FramesTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Tag(Namespaces.Severity.NORMAL)
     @DisplayName("Validate the behavior of the Frames resizing")
     public void testFrameResizing() {
         int resizeValue = new Random().nextInt(50);
