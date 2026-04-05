@@ -34,7 +34,7 @@ public class IFramesTests extends BaseTest{
     @ParameterizedTest
     @MethodSource("selenium.utils.TestDataProvider#paragraphsTestData")
     @Severity(SeverityLevel.NORMAL)
-    @Tag(Namespaces.Severity.NORMAL)
+    @Tag(Namespaces.Severity.MEDIUM)
     @DisplayName("Validate paragraph text")
     public void testLongPageParagraphsTexts(int id, String expectedText) {
         Assertions.assertAll(

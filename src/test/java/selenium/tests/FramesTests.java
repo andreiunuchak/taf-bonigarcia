@@ -64,7 +64,7 @@ public class FramesTests extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.NORMAL)
-    @Tag(Namespaces.Severity.NORMAL)
+    @Tag(Namespaces.Severity.MEDIUM)
     @DisplayName("Validate the behavior of the Frames resizing")
     public void testFrameResizing() {
         int resizeValue = new Random().nextInt(50);

@@ -63,7 +63,7 @@ public class CookiesTests extends BaseTest {
     @Test
     @DisplayName("Validate deleting Cookies")
     @Severity(SeverityLevel.NORMAL)
-    @Tag(Namespaces.Severity.NORMAL)
+    @Tag(Namespaces.Severity.MEDIUM)
     public void testDeleteCookies() {
         Cookie deleteCookie = cookiesPage.clickDisplayCookies().getUICookiesList().stream().toList().getFirst();
         Set<Cookie> uiCookiesList = cookiesPage

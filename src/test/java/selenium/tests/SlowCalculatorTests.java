@@ -44,7 +44,7 @@ public class SlowCalculatorTests extends BaseTest {
     @ParameterizedTest
     @MethodSource("selenium.utils.TestDataProvider#mathCalculationsTestData")
     @Severity(SeverityLevel.NORMAL)
-    @Tag(Namespaces.Severity.NORMAL)
+    @Tag(Namespaces.Severity.MEDIUM)
     @DisplayName("Test calculation operations with various delays")
     public void testCalculateOperationWithDelays(String operation, String expectedResult) {
         int delay = new Random().nextInt(1, 15);

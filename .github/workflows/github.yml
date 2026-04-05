@@ -78,7 +78,7 @@ jobs:
           remote_url: http://localhost:4444/wd/hub
         run: |
           rm -rf target/surefire-reports
-          mvn test -Dgroups="medium,flaky" -Dmaven.test.failure.ignore=true
+          mvn test -Dgroups="medium,flaky" "-Dmaven.test.failure.ignore=true"
 
       - name: Check Medium Failure Percentage (10%)
         if: always() && (github.ref == 'refs/heads/master' || github.base_ref == 'master')
@@ -111,7 +111,7 @@ jobs:
           remote_url: http://localhost:4444/wd/hub
         run: |
           rm -rf target/surefire-reports
-          mvn test -Dgroups="minor" -Dmaven.test.failure.ignore=true
+          mvn test -Dgroups="minor" "-Dmaven.test.failure.ignore=true"
 
       - name: Check Minor Failure Percentage (20%)
         if: always() && (github.ref == 'refs/heads/master' || github.base_ref == 'master')

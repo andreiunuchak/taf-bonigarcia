@@ -30,7 +30,7 @@ public class LoadingImagesTests extends BaseTest{
 
     @Test
     @Severity(SeverityLevel.NORMAL)
-    @Tag(Namespaces.Severity.NORMAL)
+    @Tag(Namespaces.Severity.MEDIUM)
     @DisplayName("Validate status texts on the LoadingImages page")
     public void testLoadingImagesStatus() {
         Assertions.assertAll(

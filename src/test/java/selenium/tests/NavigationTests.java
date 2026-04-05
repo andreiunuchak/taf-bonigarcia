@@ -46,7 +46,7 @@ public class NavigationTests extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.NORMAL)
-    @Tag(Namespaces.Severity.NORMAL)
+    @Tag(Namespaces.Severity.MEDIUM)
     @DisplayName("Validate Next and Previous buttons behavior on the Navigation page")
     public void testNavigationPreviousNext() {
         navigationPage.clickNext();
@@ -61,7 +61,7 @@ public class NavigationTests extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.NORMAL)
-    @Tag(Namespaces.Severity.NORMAL)
+    @Tag(Namespaces.Severity.MEDIUM)
     @DisplayName("Validate ReturnToIndex button behavior on the Navigation page")
     public void testNavigationBackToIndex() {
         navigationPage.clickBackToIndex();

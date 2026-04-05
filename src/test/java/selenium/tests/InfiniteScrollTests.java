@@ -33,7 +33,7 @@ public class InfiniteScrollTests extends BaseTest {
     @ParameterizedTest
     @MethodSource("selenium.utils.TestDataProvider#paragraphsTestData")
     @Severity(SeverityLevel.NORMAL)
-    @Tag(Namespaces.Severity.NORMAL)
+    @Tag(Namespaces.Severity.MEDIUM)
     @DisplayName("Validate paragraph text on the InfiniteScroll page")
     public void testInfinitePageParagraphsTexts(int id, String expectedText) {
         Assertions.assertAll(

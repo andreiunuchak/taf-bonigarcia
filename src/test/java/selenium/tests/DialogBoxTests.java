@@ -55,7 +55,7 @@ public class DialogBoxTests extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.NORMAL)
-    @Tag(Namespaces.Severity.NORMAL)
+    @Tag(Namespaces.Severity.MEDIUM)
     @DisplayName("Validate Confirm dialog box pressing 'Dismiss'")
     public void testConfirmDialogBoxDismission() {
         dialogBoxPage.clickLaunchConfirm();
@@ -84,7 +84,7 @@ public class DialogBoxTests extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.NORMAL)
-    @Tag(Namespaces.Severity.NORMAL)
+    @Tag(Namespaces.Severity.MEDIUM)
     @DisplayName("Validate Prompt dialog box pressing 'Dismiss'")
     public void testPromptDialogBoxDismission() {
         String prompt = new Faker().name().fullName();
@@ -117,7 +117,7 @@ public class DialogBoxTests extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.NORMAL)
-    @Tag(Namespaces.Severity.NORMAL)
+    @Tag(Namespaces.Severity.MEDIUM)
     @DisplayName("Validate Modal dialog box pressing 'Dismiss'")
     public void testModalDialogBoxDismission() {
         dialogBoxPage.clickLaunchModal();

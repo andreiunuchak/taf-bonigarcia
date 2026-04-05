@@ -48,7 +48,7 @@ public class Namespaces {
     public static class Severity {
         public static final String BLOCKER = "blocker";
         public static final String CRITICAL = "critical";
-        public static final String NORMAL = "normal";
+        public static final String MEDIUM = "medium";
         public static final String MINOR = "minor";
         public static final String TRIVIAL = "trivial";
     }
