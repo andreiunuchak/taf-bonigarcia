@@ -6,10 +6,10 @@ env:
 on:
   push:
     branches:
-      - master
+      - '**'
   pull_request:
     branches:
-      - '**'
+      - master
 
 jobs:
   build:
@@ -72,7 +72,7 @@ jobs:
         run: mvn clean test -Dgroups="critical" -DexcludedGroups="flaky"
 
       - name: Run Medium Tests
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/master' || github.base_ref == 'master'
         continue-on-error: true
         env:
           remote_url: http://localhost:4444/wd/hub
@@ -81,7 +81,7 @@ jobs:
           mvn test -Dgroups="medium,flaky" -Dmaven.test.failure.ignore=true
 
       - name: Check Medium Failure Percentage (10%)
-        if: always() && github.ref == 'refs/heads/master'
+        if: always() && (github.ref == 'refs/heads/master' || github.base_ref == 'master')
         run: |
           TOTAL=$(grep -h "testsuite" target/surefire-reports/TEST-*.xml | sed -n 's/.*tests="\([^"]*\)".*/\1/p' | awk '{s+=$1} END {print s+0}')
           FAILURES=$(grep -h "testsuite" target/surefire-reports/TEST-*.xml | sed -n 's/.*failures="\([^"]*\)".*/\1/p' | awk '{s+=$1} END {print s+0}')
@@ -105,7 +105,7 @@ jobs:
           fi
 
       - name: Run Minor Tests
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/master' || github.base_ref == 'master'
         continue-on-error: true
         env:
           remote_url: http://localhost:4444/wd/hub
@@ -114,7 +114,7 @@ jobs:
           mvn test -Dgroups="minor" -Dmaven.test.failure.ignore=true
 
       - name: Check Minor Failure Percentage (20%)
-        if: always() && github.ref == 'refs/heads/master'
+        if: always() && (github.ref == 'refs/heads/master' || github.base_ref == 'master')
         run: |
           TOTAL=$(grep -h "testsuite" target/surefire-reports/TEST-*.xml | sed -n 's/.*tests="\([^"]*\)".*/\1/p' | awk '{s+=$1} END {print s+0}')
           FAILURES=$(grep -h "testsuite" target/surefire-reports/TEST-*.xml | sed -n 's/.*failures="\([^"]*\)".*/\1/p' | awk '{s+=$1} END {print s+0}')
@@ -143,6 +143,7 @@ jobs:
         with:
           name: allure-results
           path: target/allure-results
+
       - name: Generate Allure Report
         if: always()
         run: allure generate --clean target/allure-results -o target/allure-report
