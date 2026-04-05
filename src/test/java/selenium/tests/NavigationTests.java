@@ -34,7 +34,7 @@ public class NavigationTests extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Tag(Namespaces.Severity.CRITICAL)
     @DisplayName("Validate description and paginator states on the each page of Navigation")
-    public void testNavigationPageStates(int pageNumber, boolean expectedPreviousState, boolean expectedNextState, String expectedDescription) throws InterruptedException {
+    public void testNavigationPageStates(int pageNumber, boolean expectedPreviousState, boolean expectedNextState, String expectedDescription) {
         navigationPage.selectPage(pageNumber);
         Assertions.assertAll(
                 () -> Assertions.assertEquals(expectedPreviousState, navigationPage.isPreviousDisabled(), "Incorrect previous state"),
