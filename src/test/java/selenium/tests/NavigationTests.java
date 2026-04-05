@@ -5,14 +5,11 @@ import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import selenium.annotations.Headless;
 import selenium.constants.Namespaces;
 import selenium.pages.HomePage;
 import selenium.pages.NavigationPage;
-
-import java.util.stream.Stream;
 
 @Headless
 @Story(Namespaces.Stories.NAVIGATION)
