@@ -2,15 +2,20 @@ package selenium.pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 
-public class InfiniteScrollPage extends AbstractPage {
+public class InfiniteScrollPage extends BasePage {
     private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byParagraph = By.xpath("//div[@class='row']//p");
+
+    public InfiniteScrollPage(WebDriver driver) {
+        super(driver);
+    }
 
     @Override
     @Step("Open InfiniteScrollPage: " + URL)

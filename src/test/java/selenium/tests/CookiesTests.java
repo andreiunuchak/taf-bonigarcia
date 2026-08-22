@@ -20,7 +20,7 @@ public class CookiesTests extends BaseTest {
 
     @BeforeEach
     public void openPage() {
-        cookiesPage = new HomePage().open().clickCookies();
+        cookiesPage = new HomePage(driver).open().clickCookies();
     }
 
     @Test
@@ -28,6 +28,7 @@ public class CookiesTests extends BaseTest {
     @Tag(Namespaces.Severity.MINOR)
     @DisplayName("Validate the title on the Cookies page")
     public void testNavigationTitle() {
+        System.out.println("Test Method");
         Assertions.assertEquals("Cookies", cookiesPage.getTitle());
     }
 

@@ -23,7 +23,7 @@ public class DrawInCanvasTests extends BaseTest {
 
     @BeforeEach
     public void openPage() {
-        drawInCanvasPage = new HomePage().open().clickDrawInCanvas();
+        drawInCanvasPage = new HomePage(driver).open().clickDrawInCanvas();
     }
 
     @Test
@@ -42,7 +42,7 @@ public class DrawInCanvasTests extends BaseTest {
         Assertions.assertEquals("Click to draw.", drawInCanvasPage.getDescription());
     }
 
-    @Test
+    @RepeatedTest(20)
     @Headed
     @Severity(SeverityLevel.CRITICAL)
     @Tag(Namespaces.Severity.CRITICAL)

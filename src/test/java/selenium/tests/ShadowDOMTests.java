@@ -16,7 +16,7 @@ public class ShadowDOMTests extends BaseTest {
 
     @BeforeEach
     public void openPage() {
-        shadowDOMPage = new HomePage().open().clickShadowDom();
+        shadowDOMPage = new HomePage(driver).open().clickShadowDom();
     }
 
     @Test

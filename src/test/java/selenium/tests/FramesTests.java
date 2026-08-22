@@ -19,7 +19,7 @@ public class FramesTests extends BaseTest {
 
     @BeforeEach
     public void openPage() {
-        framesPage = new HomePage().open().clickFrames();
+        framesPage = new HomePage(driver).open().clickFrames();
     }
 
     @Test

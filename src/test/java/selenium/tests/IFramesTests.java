@@ -20,7 +20,7 @@ public class IFramesTests extends BaseTest{
 
     @BeforeEach
     public void openPage() {
-        iframesPage = new HomePage().open().clickIFrames();
+        iframesPage = new HomePage(driver).open().clickIFrames();
     }
 
     @Test

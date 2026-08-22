@@ -17,7 +17,7 @@ public class DragAndDropTests extends BaseTest {
 
     @BeforeEach
     public void openPage() {
-        dragAndDropPage = new HomePage().open().clickDragAndDrop();
+        dragAndDropPage = new HomePage(driver).open().clickDragAndDrop();
     }
 
     @Test

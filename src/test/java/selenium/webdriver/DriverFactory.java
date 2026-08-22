@@ -1,5 +1,6 @@
 package selenium.webdriver;
 
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -9,58 +10,84 @@ import org.openqa.selenium.remote.AbstractDriverOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.URI;
 import java.time.Duration;
 import java.util.Map;
 import java.util.Optional;
 
 public abstract class DriverFactory {
 
-    public static WebDriver getDriver(String... options) {
+    private static final String DEFAULT_PROXY = System.getProperty("proxy.url", "localhost:8080");
+
+    public static WebDriver getDriver(boolean toProxy, String... options) {
         String remoteURL = Optional.ofNullable(System.getenv("remote_url")).orElse(System.getProperty("remote_url"));
         String browserType = System.getProperty("browser", "chrome").toLowerCase();
-        AbstractDriverOptions<?> driverOptions = createOptions(browserType, options);
-        WebDriver driver;
-        if (remoteURL != null && !remoteURL.isBlank()) {
-            driver = createRemoteDriver(remoteURL, driverOptions);
-        } else {
-            driver = createLocalDriver(driverOptions);
-        }
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
+        AbstractDriverOptions<?> driverOptions = createOptions(browserType, toProxy, remoteURL != null && !remoteURL.isBlank(), options);
+
+        WebDriver driver = (remoteURL != null && !remoteURL.isBlank())
+                ? createRemoteDriver(remoteURL, driverOptions)
+                : createLocalDriver(driverOptions);
+
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
         driver.manage().window().maximize();
         return driver;
     }
 
-    private static AbstractDriverOptions<?> createOptions(String browserType, String... options) {
-        AbstractDriverOptions<?> driverOptions = browserType.equals("firefox") ? new FirefoxOptions() : new ChromeOptions();
-        for (String option : options) {
-            if (driverOptions instanceof ChromeOptions) ((ChromeOptions) driverOptions).addArguments(option);
-            if (driverOptions instanceof FirefoxOptions) ((FirefoxOptions) driverOptions).addArguments(option);
+    private static AbstractDriverOptions<?> createOptions(String browserType, boolean toProxy, boolean isRemote, String... options) {
+        AbstractDriverOptions<?> driverOptions = switch (browserType) {
+            case "chrome" -> buildChromeOptions(isRemote, options);
+            case "firefox" -> buildFirefoxOptions(isRemote, options);
+            default -> throw new IllegalArgumentException("Unsupported browser: " + browserType);
+        };
+
+        if (toProxy) {
+            Proxy proxy = new Proxy()
+                    .setHttpProxy(DEFAULT_PROXY)
+                    .setSslProxy(DEFAULT_PROXY);
+            driverOptions.setProxy(proxy);
+            driverOptions.setAcceptInsecureCerts(true);
         }
+
         return driverOptions;
     }
 
+    private static ChromeOptions buildChromeOptions(boolean isRemote, String... options) {
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments(options);
+        if (isRemote) {
+            chromeOptions.addArguments("--no-sandbox", "--disable-dev-shm-usage");
+            chromeOptions.setCapability("goog:loggingPrefs", Map.of("browser", "ALL"));
+        } else {
+            chromeOptions.addArguments("--disable-search-engine-choice-screen");
+        }
+        return chromeOptions;
+    }
+
+    private static FirefoxOptions buildFirefoxOptions(boolean isRemote, String... options) {
+        FirefoxOptions firefoxOptions = new FirefoxOptions();
+        firefoxOptions.addArguments(options);
+        if (isRemote) {
+            firefoxOptions.addArguments("--no-sandbox", "--disable-dev-shm-usage");
+            firefoxOptions.setCapability("moz:debuggerAddress", true);
+        }
+        return firefoxOptions;
+    }
+
     private static WebDriver createRemoteDriver(String remoteURL, AbstractDriverOptions<?> options) {
-        if (options instanceof ChromeOptions opt) {
-            opt.addArguments("--no-sandbox", "--disable-dev-shm-usage");
-            opt.setCapability("goog:loggingPrefs", Map.of("browser", "ALL"));
-        }
-        if (options instanceof FirefoxOptions opt) {
-            opt.addArguments("--no-sandbox", "--disable-dev-shm-usage");
-            opt.setCapability("moz:debuggerAddress", true);
-        }
         try {
-            return new RemoteWebDriver(new URL(remoteURL), options);
-        } catch (MalformedURLException e) {
+            return new RemoteWebDriver(URI.create(remoteURL).toURL(), options);
+        } catch (MalformedURLException | IllegalArgumentException e) {
             throw new RuntimeException("Invalid Remote WebDriver URL: " + remoteURL, e);
         }
     }
 
     private static WebDriver createLocalDriver(AbstractDriverOptions<?> options) {
-        if (options instanceof ChromeOptions opt) {
-            opt.addArguments("--disable-search-engine-choice-screen");
-            return new ChromeDriver(opt);
+        if (options instanceof ChromeOptions chromeOptions) {
+            return new ChromeDriver(chromeOptions);
+        } else if (options instanceof FirefoxOptions firefoxOptions) {
+            return new FirefoxDriver(firefoxOptions);
         }
-        return new FirefoxDriver((FirefoxOptions) options);
+        throw new IllegalArgumentException("Unsupported options type: " + options.getClass().getName());
     }
 }

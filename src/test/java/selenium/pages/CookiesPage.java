@@ -3,16 +3,21 @@ package selenium.pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
+import org.openqa.selenium.WebDriver;
 
 import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class CookiesPage extends AbstractPage {
+public class CookiesPage extends BasePage {
     private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/cookies.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byDisplayCookies = By.id("refresh-cookies");
     private final By byCookiesList = By.id("cookies-list");
+
+    public CookiesPage(WebDriver driver) {
+        super(driver);
+    }
 
     @Override
     @Step("Open Cookies:" + URL)
@@ -56,5 +61,4 @@ public class CookiesPage extends AbstractPage {
         driver.manage().deleteCookie(cookie);
         return this;
     }
-
 }

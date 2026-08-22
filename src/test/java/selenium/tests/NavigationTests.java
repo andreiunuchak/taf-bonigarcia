@@ -18,7 +18,7 @@ public class NavigationTests extends BaseTest {
 
     @BeforeEach
     public void openNavigationPage() {
-        navigationPage = new HomePage().open().clickNavigation();
+        navigationPage = new HomePage(driver).open().clickNavigation();
     }
 
     @Test
@@ -65,6 +65,6 @@ public class NavigationTests extends BaseTest {
     @DisplayName("Validate ReturnToIndex button behavior on the Navigation page")
     public void testNavigationBackToIndex() {
         navigationPage.clickBackToIndex();
-        Assertions.assertEquals(new HomePage().URL + "index.html", driver.getCurrentUrl(), "Incorrect url");
+        Assertions.assertEquals(new HomePage(driver).URL + "index.html", driver.getCurrentUrl(), "Incorrect url");
     }
 }

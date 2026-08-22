@@ -11,5 +11,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @ExtendWith(HeadlessExtension.class)
 public @interface Headless {
+    boolean proxy() default false;
 }
 

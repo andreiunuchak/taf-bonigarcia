@@ -2,9 +2,10 @@ package selenium.pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
-public class MouseOverPage extends AbstractPage {
+public class MouseOverPage extends BasePage {
     private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/mouse-over.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byCompassImage = By.xpath("//img[@src='img/compass.png']");
@@ -12,6 +13,10 @@ public class MouseOverPage extends AbstractPage {
     private final By byAwardImage = By.xpath("//img[@src='img/award.png']");
     private final By byLandscapeImage = By.xpath("//img[@src='img/landscape.png']");
     private final By byNoteText = By.xpath("./following::div/p");
+
+    public MouseOverPage(WebDriver driver) {
+        super(driver);
+    }
 
     @Override
     @Step("Open MouseOverPage:" + URL)

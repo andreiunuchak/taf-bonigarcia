@@ -15,7 +15,7 @@ public class HomeTests extends BaseTest{
 
     @BeforeEach
     public void openHomePage(){
-        homePage = new HomePage().open();
+        homePage = new HomePage(driver).open();
     }
 
     @Test

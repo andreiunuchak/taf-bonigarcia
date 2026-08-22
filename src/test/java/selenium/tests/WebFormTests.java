@@ -21,7 +21,7 @@ public class WebFormTests extends BaseTest {
 
     @BeforeEach
     public void openWebFormPage() {
-        webForm = new HomePage().open().clickWebForm();
+        webForm = new HomePage(driver).open().clickWebForm();
     }
 
     @Test
@@ -175,8 +175,8 @@ public class WebFormTests extends BaseTest {
     public void testWebFormSubmit() {
         webForm.clickSubmit();
         Assertions.assertAll(
-                () -> Assertions.assertEquals("Form submitted", new SubmitPage().getTitle()),
-                () -> Assertions.assertEquals("Received!", new SubmitPage().getDescription())
+                () -> Assertions.assertEquals("Form submitted", new SubmitPage(driver).getTitle()),
+                () -> Assertions.assertEquals("Received!", new SubmitPage(driver).getDescription())
         );
     }
 
@@ -216,6 +216,6 @@ public class WebFormTests extends BaseTest {
     @DisplayName("Validate ReturnToIndex button behavior on the WebForm page")
     public void testWebFormReturnToIndex() {
         webForm.clickReturnToIndex();
-        Assertions.assertEquals(new HomePage().URL + "index.html", driver.getCurrentUrl());
+        Assertions.assertEquals(new HomePage(driver).URL + "index.html", driver.getCurrentUrl());
     }
 }

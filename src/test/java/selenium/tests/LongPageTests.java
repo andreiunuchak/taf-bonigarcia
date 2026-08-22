@@ -21,7 +21,7 @@ public class LongPageTests extends BaseTest {
 
     @BeforeEach
     public void openPage() {
-        longPage = new HomePage().open().clickLongPage();
+        longPage = new HomePage(driver).open().clickLongPage();
     }
 
     @Test

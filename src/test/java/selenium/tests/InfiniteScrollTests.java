@@ -19,7 +19,7 @@ public class InfiniteScrollTests extends BaseTest {
 
     @BeforeEach
     public void openPage() {
-        infiniteScrollPage = new HomePage().open().clickInfiniteScroll();
+        infiniteScrollPage = new HomePage(driver).open().clickInfiniteScroll();
     }
 
     @Test

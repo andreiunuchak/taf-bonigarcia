@@ -2,20 +2,19 @@ package selenium.pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import selenium.utils.Waiters;
+import org.openqa.selenium.WebDriver;
 
-public class SubmitPage extends AbstractPage {
+public class SubmitPage extends BasePage {
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byDescription = By.xpath("//p");
-    private final Waiters waiters;
 
-    public SubmitPage() {
-        super();
-        this.waiters = new Waiters();
+    public SubmitPage(WebDriver driver) {
+        super(driver);
     }
 
+
     @Override
-    public AbstractPage open() {
+    public BasePage open() {
         return null;
     }
 
