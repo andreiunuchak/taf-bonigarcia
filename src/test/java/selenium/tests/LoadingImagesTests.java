@@ -17,7 +17,7 @@ public class LoadingImagesTests extends BaseTest{
 
     @BeforeEach
     public void openPage(){
-        loadingImagesPage = new HomePage().open().clickLoadingImages();
+        loadingImagesPage = new HomePage(driver).open().clickLoadingImages();
     }
 
     @Test

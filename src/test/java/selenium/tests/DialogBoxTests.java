@@ -17,7 +17,7 @@ public class DialogBoxTests extends BaseTest {
 
     @BeforeEach
     public void openPage() {
-        dialogBoxPage = new HomePage().open().clickDialogBoxes();
+        dialogBoxPage = new HomePage(driver).open().clickDialogBoxes();
     }
 
     @Test

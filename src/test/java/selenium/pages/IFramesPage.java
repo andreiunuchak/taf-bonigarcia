@@ -3,21 +3,27 @@ package selenium.pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 
-public class IFramesPage extends AbstractPage {
+public class IFramesPage extends BasePage {
     private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/iframes.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byIFrame = By.id("my-iframe");
     private final By byParagraph = By.xpath("//p");
 
+    public IFramesPage(WebDriver driver) {
+        super(driver);
+    }
+
     @Override
     @Step("Open IFramesPage: " + URL)
     public IFramesPage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 

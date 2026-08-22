@@ -2,10 +2,11 @@ package selenium.pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 import java.util.Objects;
 
-public class NavigationPage extends AbstractPage {
+public class NavigationPage extends BasePage {
     private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/navigation1.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byDescription = By.xpath("//p");
@@ -14,10 +15,15 @@ public class NavigationPage extends AbstractPage {
     private final By byPages = By.xpath("//ul[@class='pagination']/li");
     private final By byBackToIndex = By.xpath("//a[@href='index.html']");
 
+    public NavigationPage(WebDriver driver) {
+        super(driver);
+    }
+
     @Override
     @Step("Open NavigationPage: " + URL)
     public NavigationPage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 
@@ -56,7 +62,7 @@ public class NavigationPage extends AbstractPage {
     @Step("Click BackToIndex button")
     public HomePage clickBackToIndex() {
         driver.findElement(byBackToIndex).click();
-        return new HomePage();
+        return new HomePage(driver);
     }
 
     @Step("Check if Previous button is disabled")

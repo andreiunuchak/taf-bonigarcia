@@ -2,13 +2,14 @@ package selenium.pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import selenium.utils.Waiters;
 
 import java.time.Duration;
 
-public class SlowCalculatorPage extends AbstractPage {
+public class SlowCalculatorPage extends BasePage {
     private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byDelay = By.id("delay");
@@ -17,10 +18,15 @@ public class SlowCalculatorPage extends AbstractPage {
     private final By byClear = By.xpath("//span[@class='clear btn btn-outline-danger']");
     private final By bySpinner = By.id("spinner']");
 
+    public SlowCalculatorPage(WebDriver driver) {
+        super(driver);
+    }
+
     @Override
     @Step("Open SlowCalculatorPage: " + URL)
     public SlowCalculatorPage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 
@@ -74,7 +80,7 @@ public class SlowCalculatorPage extends AbstractPage {
     }
 
     private void waitForCalcToLoad() {
-        String[] characters = "0123456789/*-+=".replaceAll("/", "÷").replaceAll("\\*", "x").split("");
+        String[] characters = "0123456789÷x-+=".split("");
         for (String character : characters) {
             waiters.waitUntilElementClickable(driver.findElement(byKeys).findElement(By.xpath(String.format("//*[text()='%s']", character))));
         }

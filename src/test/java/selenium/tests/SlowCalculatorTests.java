@@ -21,7 +21,7 @@ public class SlowCalculatorTests extends BaseTest {
 
     @BeforeEach
     public void openPage() {
-        slowCalculatorPage = new HomePage().open().clickSlowCalculator();
+        slowCalculatorPage = new HomePage(driver).open().clickSlowCalculator();
     }
 
     @Test

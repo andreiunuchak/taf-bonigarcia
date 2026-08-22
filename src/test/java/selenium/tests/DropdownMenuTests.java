@@ -16,7 +16,7 @@ public class DropdownMenuTests extends BaseTest {
 
     @BeforeEach
     public void openDropDownMenuPage() {
-        dropdownMenuPage = new HomePage().open().clickDropDownMenu();
+        dropdownMenuPage = new HomePage(driver).open().clickDropDownMenu();
     }
 
     @Test

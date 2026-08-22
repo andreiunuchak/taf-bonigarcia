@@ -4,10 +4,10 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
-import selenium.utils.Waiters;
+import org.openqa.selenium.WebDriver;
 
 
-public class LoadingImagesPage extends AbstractPage {
+public class LoadingImagesPage extends BasePage {
     private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/loading-images.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byStatus = By.id("text");
@@ -17,10 +17,15 @@ public class LoadingImagesPage extends AbstractPage {
     private final By byAwardImage = By.id("text");
     private final By byLandscapeImage = By.id("text");
 
+    public LoadingImagesPage(WebDriver driver) {
+        super(driver);
+    }
+
     @Override
     @Step("Open LoadingImagesPage: " + URL)
     public LoadingImagesPage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 
@@ -67,7 +72,7 @@ public class LoadingImagesPage extends AbstractPage {
 
     @Step("Waiting for images loading to complete")
     public LoadingImagesPage waitForLoadingToComplete() {
-        new Waiters().waitUntilElementRemoved(byStatusSpinner);
+        waiters.waitUntilElementRemoved(byStatusSpinner);
         return this;
     }
 }

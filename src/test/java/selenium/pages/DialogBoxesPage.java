@@ -4,7 +4,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import selenium.utils.Waiters;
 
-public class DialogBoxesPage extends AbstractPage {
+public class DialogBoxesPage extends BasePage {
     private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/dialog-boxes.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byLaunchAlertButton = By.id("my-alert");
@@ -20,10 +20,15 @@ public class DialogBoxesPage extends AbstractPage {
     private final By byModalDialogBoxTitle = By.id("exampleModalLabel");
     private final By byModalDialogBoxMessage = By.xpath("//div[@class='modal-body']");
 
+    public DialogBoxesPage(WebDriver driver) {
+        super(driver);
+    }
+
     @Override
     @Step("Open DialogBoxesPage: " + URL)
     public DialogBoxesPage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 
@@ -54,7 +59,7 @@ public class DialogBoxesPage extends AbstractPage {
     @Step("Click Launch Modal button")
     public DialogBoxesPage clickLaunchModal() {
         driver.findElement(byLaunchModalButton).click();
-        new Waiters().waitUntilElementVisible(byModalDialogBox);
+        waiters.waitUntilElementVisible(byModalDialogBox);
         return this;
     }
 
@@ -63,9 +68,9 @@ public class DialogBoxesPage extends AbstractPage {
         try {
             driver.switchTo().alert().accept();
         } catch (NoAlertPresentException _) {
-            WebElement btn = new Waiters().waitUntilElementVisible(byModalDialogBox).findElement(byModalDialogBoxConfirmButton);
-            new Waiters().waitUntilElementClickable(btn).click();
-            new Waiters().waitUntilElementInvisible(byModalDialogBox);
+            WebElement btn = waiters.waitUntilElementVisible(byModalDialogBox).findElement(byModalDialogBoxConfirmButton);
+            waiters.waitUntilElementClickable(btn).click();
+            waiters.waitUntilElementInvisible(byModalDialogBox);
         }
         return this;
     }
@@ -75,9 +80,9 @@ public class DialogBoxesPage extends AbstractPage {
         try {
             driver.switchTo().alert().dismiss();
         } catch (NoAlertPresentException _) {
-            WebElement btn = new Waiters().waitUntilElementVisible(byModalDialogBox).findElement(byModalDialogBoxDismissButton);
-            new Waiters().waitUntilElementClickable(btn).click();
-            new Waiters().waitUntilElementInvisible(byModalDialogBox);
+            WebElement btn = waiters.waitUntilElementVisible(byModalDialogBox).findElement(byModalDialogBoxDismissButton);
+            waiters.waitUntilElementClickable(btn).click();
+            waiters.waitUntilElementInvisible(byModalDialogBox);
         }
         return this;
     }
@@ -90,12 +95,12 @@ public class DialogBoxesPage extends AbstractPage {
 
     @Step("Receive Modal DialogBox title")
     public String getModalDialogBoxTitle() {
-        return new Waiters().waitUntilElementVisible(byModalDialogBoxTitle).getText();
+        return waiters.waitUntilElementVisible(byModalDialogBoxTitle).getText();
     }
 
     @Step("Receive DialogBox message")
     public String getDialogBoxMessage() {
-        String message = "";
+        String message;
         try {
             message = driver.switchTo().alert().getText();
         } catch (NoAlertPresentException _) {

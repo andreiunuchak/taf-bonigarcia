@@ -16,7 +16,7 @@ public class MouseOverTests extends BaseTest{
 
     @BeforeEach
     public void openPage(){
-        mouseOverPage = new HomePage().open().clickMouseOver();
+        mouseOverPage = new HomePage(driver).open().clickMouseOver();
     }
 
     @Test

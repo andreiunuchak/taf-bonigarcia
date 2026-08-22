@@ -3,14 +3,14 @@ package selenium.pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
-import selenium.utils.Waiters;
 
 import java.util.Objects;
 
-public class WebFormPage extends AbstractPage {
+public class WebFormPage extends BasePage {
     private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/web-form.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byTextInput = By.id("my-text-id");
@@ -33,10 +33,15 @@ public class WebFormPage extends AbstractPage {
     private final By byExampleRange = By.name("my-range");
     private final By byReturnToIndex = By.xpath("//div[@class='form-group tp-align-right mt-3']");
 
+    public WebFormPage(WebDriver driver) {
+        super(driver);
+    }
+
     @Override
     @Step("Open WebFormPage: " + URL)
     public WebFormPage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 
@@ -195,7 +200,7 @@ public class WebFormPage extends AbstractPage {
     public SubmitPage clickSubmit() {
         new Actions(driver).moveToElement(driver.findElement(bySubmit)).perform();
         waiters.waitUntilElementClickable(bySubmit).click();
-        return new SubmitPage();
+        return new SubmitPage(driver);
     }
 
     @Step("Set \"{hexColor}\" color into the ColorPicker field")
@@ -243,6 +248,6 @@ public class WebFormPage extends AbstractPage {
     @Step("Click ReturnToIndex button")
     public HomePage clickReturnToIndex() {
         new Actions(driver).moveToElement(driver.findElement(byReturnToIndex)).click().perform();
-        return new HomePage();
+        return new HomePage(driver);
     }
 }

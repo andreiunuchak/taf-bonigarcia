@@ -20,7 +20,7 @@ public class CookiesTests extends BaseTest {
 
     @BeforeEach
     public void openPage() {
-        cookiesPage = new HomePage().open().clickCookies();
+        cookiesPage = new HomePage(driver).open().clickCookies();
     }
 
     @Test

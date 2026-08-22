@@ -3,20 +3,26 @@ package selenium.pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 
-public class LongPage extends AbstractPage {
+public class LongPage extends BasePage {
     private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/long-page.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byParagraph = By.xpath("//div[@id='content']/p");
+
+    public LongPage(WebDriver driver) {
+        super(driver);
+    }
 
     @Override
     @Step("Open LongPage: " + URL)
     public LongPage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 

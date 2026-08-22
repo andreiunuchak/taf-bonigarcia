@@ -1,9 +1,6 @@
 package selenium.utils;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import selenium.webdriver.DriverHolder;
@@ -14,9 +11,9 @@ import java.util.Objects;
 public class Waiters {
     private final WebDriverWait wait;
 
-    public Waiters() {
+    public Waiters(WebDriver driver) {
         int DEFAULT_WAIT_DURATION_SECONDS = 15;
-        this.wait = new WebDriverWait(DriverHolder.getDriver(), Duration.ofSeconds(DEFAULT_WAIT_DURATION_SECONDS));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_WAIT_DURATION_SECONDS));
     }
 
     public Waiters(int waitDurationSeconds) {
@@ -38,8 +35,8 @@ public class Waiters {
     public Boolean waitUntilElementRemoved(By locator) {
         try {
             wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        } catch (TimeoutException _) {
         }
-        catch (TimeoutException _) {}
         return wait.until(ExpectedConditions.not(ExpectedConditions.presenceOfElementLocated(locator)));
     }
 
@@ -53,6 +50,7 @@ public class Waiters {
 
     public void waitUntilPageLoaded() {
         wait.until(webDriver -> Objects.requireNonNull(((JavascriptExecutor) webDriver).executeScript("return document.readyState")).equals("complete"));
+        wait.until(webDriver -> (Boolean) ((JavascriptExecutor) webDriver).executeScript("return typeof jQuery === 'undefined' || jQuery.active == 0"));
     }
 
 }

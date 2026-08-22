@@ -2,10 +2,10 @@ package selenium.pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
-import selenium.utils.Waiters;
 
-public class DropdownMenuPage extends AbstractPage {
+public class DropdownMenuPage extends BasePage {
     private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/dropdown-menu.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byLeftClickDropdown = By.id("my-dropdown-1");
@@ -24,10 +24,15 @@ public class DropdownMenuPage extends AbstractPage {
     private final By byDoubleClickDropdown_SomethingElseHere = By.xpath("(//ul[@id='context-menu-3']/li/a)[3]");
     private final By byDoubleClickDropdown_SeparatedLink = By.xpath("(//ul[@id='context-menu-3']/li/a)[4]");
 
+    public DropdownMenuPage(WebDriver driver) {
+        super(driver);
+    }
+
     @Override
     @Step("Open DropdownMenuPage: " + URL)
     public DropdownMenuPage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 
@@ -57,7 +62,7 @@ public class DropdownMenuPage extends AbstractPage {
 
     @Step("Click Action button on the Left-Click dropdown")
     public DropdownMenuPage clickLeftClickDropdown_Action() {
-        new Waiters().waitUntilElementClickable(byLeftClickDropdown_Action);
+        waiters.waitUntilElementClickable(byLeftClickDropdown_Action);
         new Actions(driver).moveToElement(driver.findElement(byLeftClickDropdown_Action)).click().perform();
         return this;
     }
