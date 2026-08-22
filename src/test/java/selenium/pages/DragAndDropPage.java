@@ -21,6 +21,7 @@ public class DragAndDropPage extends BasePage {
     @Step("Open DragAndDropPage:" + URL)
     public DragAndDropPage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 

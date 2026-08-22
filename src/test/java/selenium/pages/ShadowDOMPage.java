@@ -18,6 +18,7 @@ public class ShadowDOMPage extends BasePage {
     @Step("Open ShadowDOMPage: " + URL)
     public ShadowDOMPage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 

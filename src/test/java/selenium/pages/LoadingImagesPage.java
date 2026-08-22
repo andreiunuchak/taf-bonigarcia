@@ -25,6 +25,7 @@ public class LoadingImagesPage extends BasePage {
     @Step("Open LoadingImagesPage: " + URL)
     public LoadingImagesPage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 

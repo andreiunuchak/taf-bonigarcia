@@ -14,8 +14,8 @@ public class SubmitPage extends BasePage {
 
 
     @Override
-    public BasePage open() {
-        return null;
+    public SubmitPage open() {
+        throw new UnsupportedOperationException("Page can't be opened");
     }
 
     @Override

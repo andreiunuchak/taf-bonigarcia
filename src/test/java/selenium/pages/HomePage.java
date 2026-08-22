@@ -52,208 +52,245 @@ public class HomePage extends BasePage {
     @Step("Open HomePage: " + URL)
     public HomePage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 
     @Override
     @Step("Receive Title")
     public String getTitle() {
+        waiters.waitUntilPageLoaded();
         return driver.findElement(byTitle).getText();
     }
 
     @Step("Receive SubTitle")
     public String getSubTitle() {
+        waiters.waitUntilPageLoaded();
         return driver.findElement(bySubtitle).getText();
     }
 
     @Step("Receive Description")
     public String getDescription() {
+        waiters.waitUntilPageLoaded();
         return driver.findElement(byDescription).getText();
     }
 
     @Step("Click WebForm button")
     public WebFormPage clickWebForm() {
         new Actions(driver).moveToElement(driver.findElement(byWebForm)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new WebFormPage(driver);
     }
 
     @Step("Click Navigation button")
     public NavigationPage clickNavigation() {
         new Actions(driver).moveToElement(driver.findElement(byNavigation)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new NavigationPage(driver);
     }
 
     @Step("Click DropDownMenu button")
     public DropdownMenuPage clickDropDownMenu() {
         new  Actions(driver).moveToElement(driver.findElement(byDropDownMenu)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new DropdownMenuPage(driver);
     }
 
     @Step("Click MouseOver button")
     public MouseOverPage clickMouseOver() {
         new  Actions(driver).moveToElement(driver.findElement(byMouseOver)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new MouseOverPage(driver);
     }
 
     @Step("Click DragAndDrop button")
     public DragAndDropPage clickDragAndDrop() {
         new  Actions(driver).moveToElement(driver.findElement(byDragAndDrop)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new DragAndDropPage(driver);
     }
 
     @Step("Click DrawInCanvas button")
     public DrawInCanvasPage clickDrawInCanvas() {
         new  Actions(driver).moveToElement(driver.findElement(byDrawInCanvas)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new DrawInCanvasPage(driver);
     }
 
     @Step("Click LoadingImages button")
     public LoadingImagesPage clickLoadingImages() {
         new  Actions(driver).moveToElement(driver.findElement(byLoadingImages)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new LoadingImagesPage(driver);
     }
 
     @Step("Click SlowCalculator button")
     public SlowCalculatorPage clickSlowCalculator() {
         new  Actions(driver).moveToElement(driver.findElement(bySlowCalculator)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new SlowCalculatorPage(driver);
     }
 
     @Step("Click LongPage button")
     public LongPage clickLongPage() {
         new  Actions(driver).moveToElement(driver.findElement(byLongPage)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new LongPage(driver);
     }
 
     @Step("Click InfiniteScroll button")
     public InfiniteScrollPage clickInfiniteScroll() {
         new Actions(driver).moveToElement(driver.findElement(byInfiniteScroll)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new InfiniteScrollPage(driver);
     }
 
     @Step("Click ShadowDom button")
     public ShadowDOMPage clickShadowDom() {
         new  Actions(driver).moveToElement(driver.findElement(byShadowDom)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new ShadowDOMPage(driver);
     }
 
     @Step("Click Cookies button")
     public CookiesPage clickCookies() {
         new  Actions(driver).moveToElement(driver.findElement(byCookies)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new CookiesPage(driver);
     }
 
     @Step("Click Frames button")
     public FramesPage clickFrames() {
         new  Actions(driver).moveToElement(driver.findElement(byFrames)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new FramesPage(driver);
     }
 
     @Step("Click IFrames button")
     public IFramesPage clickIFrames() {
         new  Actions(driver).moveToElement(driver.findElement(byIFrames)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new IFramesPage(driver);
     }
 
     @Step("Click DialogBoxes button")
     public DialogBoxesPage clickDialogBoxes() {
         new   Actions(driver).moveToElement(driver.findElement(byDialogBoxes)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new DialogBoxesPage(driver);
     }
 
     @Step("Click WebStorage button")
     public HomePage clickWebStorage() {
         new   Actions(driver).moveToElement(driver.findElement(byWebStorage)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new HomePage(driver);
     }
 
     @Step("Click Geolocation button")
     public HomePage clickGeolocation() {
         new  Actions(driver).moveToElement(driver.findElement(byGeolocation)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new HomePage(driver);
     }
 
     @Step("Click Notifications button")
     public HomePage clickNotifications() {
         new  Actions(driver).moveToElement(driver.findElement(byNotifications)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new HomePage(driver);
     }
 
     @Step("Click GetUserMedia button")
     public HomePage clickGetUserMedia() {
         new  Actions(driver).moveToElement(driver.findElement(byGetUserMedia)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new HomePage(driver);
     }
 
     @Step("Click Multilanguage button")
     public HomePage clickMultilanguage() {
         new   Actions(driver).moveToElement(driver.findElement(byMultilanguage)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new HomePage(driver);
     }
 
     @Step("Click ConsoleLogs button")
     public HomePage clickConsoleLogs() {
         new  Actions(driver).moveToElement(driver.findElement(byConsoleLogs)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new HomePage(driver);
     }
 
     @Step("Click LoginForm button")
     public HomePage clickLoginForm() {
         new   Actions(driver).moveToElement(driver.findElement(byLoginForm)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new HomePage(driver);
     }
 
     @Step("Click SlowLogin button")
     public HomePage clickSlowLogin() {
         new Actions(driver).moveToElement(driver.findElement(bySlowLogin)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new HomePage(driver);
     }
 
     @Step("Click RandomCalculator button")
     public HomePage clickRandomCalculator() {
         new  Actions(driver).moveToElement(driver.findElement(byRandomCalculator)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new HomePage(driver);
     }
 
     @Step("Click DownloadFiles button")
     public HomePage clickDownloadFiles() {
         new   Actions(driver).moveToElement(driver.findElement(byDownloadFiles)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new HomePage(driver);
     }
 
     @Step("Click ABTesting button")
     public HomePage clickABTesting() {
         new   Actions(driver).moveToElement(driver.findElement(byABTesting)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new HomePage(driver);
     }
 
     @Step("Click DataTypes button")
     public HomePage clickDataTypes() {
         new   Actions(driver).moveToElement(driver.findElement(byDataTypes)).click().perform();
+        waiters.waitUntilPageLoaded();
         return new HomePage(driver);
     }
 
     public String getChapterThreeTitle() {
+        waiters.waitUntilPageLoaded();
         return driver.findElement(byChapterThreeTitle).getText();
     }
 
     public String getChapterFourTitle() {
+        waiters.waitUntilPageLoaded();
         return driver.findElement(byChapterFourTitle).getText();
     }
 
     public String getChapterFiveTitle() {
+        waiters.waitUntilPageLoaded();
         return driver.findElement(byChapterFiveTitle).getText();
     }
 
     public String getChapterSevenTitle() {
+        waiters.waitUntilPageLoaded();
         return driver.findElement(byChapterSevenTitle).getText();
     }
 
     public String getChapterEightTitle() {
+        waiters.waitUntilPageLoaded();
         return driver.findElement(byChapterEightTitle).getText();
     }
 
     public String getChapterNineTitle() {
+        waiters.waitUntilPageLoaded();
         return driver.findElement(byChapterNineTitle).getText();
     }
 

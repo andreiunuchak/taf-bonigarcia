@@ -28,6 +28,7 @@ public class DialogBoxesPage extends BasePage {
     @Step("Open DialogBoxesPage: " + URL)
     public DialogBoxesPage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 

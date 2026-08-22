@@ -22,6 +22,7 @@ public class LongPage extends BasePage {
     @Step("Open LongPage: " + URL)
     public LongPage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 

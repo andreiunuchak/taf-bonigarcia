@@ -23,6 +23,7 @@ public class NavigationPage extends BasePage {
     @Step("Open NavigationPage: " + URL)
     public NavigationPage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 

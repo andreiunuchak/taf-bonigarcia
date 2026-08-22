@@ -32,6 +32,7 @@ public class DropdownMenuPage extends BasePage {
     @Step("Open DropdownMenuPage: " + URL)
     public DropdownMenuPage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 

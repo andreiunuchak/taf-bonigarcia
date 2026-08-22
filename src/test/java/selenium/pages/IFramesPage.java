@@ -23,6 +23,7 @@ public class IFramesPage extends BasePage {
     @Step("Open IFramesPage: " + URL)
     public IFramesPage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 

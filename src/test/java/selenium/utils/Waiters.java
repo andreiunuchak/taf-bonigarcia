@@ -35,8 +35,8 @@ public class Waiters {
     public Boolean waitUntilElementRemoved(By locator) {
         try {
             wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        } catch (TimeoutException _) {
         }
-        catch (TimeoutException _) {}
         return wait.until(ExpectedConditions.not(ExpectedConditions.presenceOfElementLocated(locator)));
     }
 
@@ -50,6 +50,7 @@ public class Waiters {
 
     public void waitUntilPageLoaded() {
         wait.until(webDriver -> Objects.requireNonNull(((JavascriptExecutor) webDriver).executeScript("return document.readyState")).equals("complete"));
+        wait.until(webDriver -> (Boolean) ((JavascriptExecutor) webDriver).executeScript("return typeof jQuery === 'undefined' || jQuery.active == 0"));
     }
 
 }

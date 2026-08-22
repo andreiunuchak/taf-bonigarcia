@@ -24,6 +24,7 @@ public class FramesPage extends BasePage {
     @Step("Open FramesPage: " + URL)
     public FramesPage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 

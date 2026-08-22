@@ -22,6 +22,7 @@ public class MouseOverPage extends BasePage {
     @Step("Open MouseOverPage:" + URL)
     public MouseOverPage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 

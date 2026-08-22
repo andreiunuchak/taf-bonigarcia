@@ -41,6 +41,7 @@ public class WebFormPage extends BasePage {
     @Step("Open WebFormPage: " + URL)
     public WebFormPage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 

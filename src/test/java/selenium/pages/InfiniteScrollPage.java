@@ -21,6 +21,7 @@ public class InfiniteScrollPage extends BasePage {
     @Step("Open InfiniteScrollPage: " + URL)
     public InfiniteScrollPage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 

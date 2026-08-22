@@ -23,6 +23,7 @@ public class CookiesPage extends BasePage {
     @Step("Open Cookies:" + URL)
     public CookiesPage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 

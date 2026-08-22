@@ -18,6 +18,7 @@ public class DrawInCanvasPage extends BasePage {
     @Step("Open DrawInCanvasPage: " + URL)
     public DrawInCanvasPage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 

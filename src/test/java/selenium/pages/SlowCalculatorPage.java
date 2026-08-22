@@ -26,6 +26,7 @@ public class SlowCalculatorPage extends BasePage {
     @Step("Open SlowCalculatorPage: " + URL)
     public SlowCalculatorPage open() {
         driver.get(URL);
+        waiters.waitUntilPageLoaded();
         return this;
     }
 
