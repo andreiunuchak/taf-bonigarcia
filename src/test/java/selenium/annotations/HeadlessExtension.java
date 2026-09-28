@@ -1,7 +1,9 @@
 package selenium.annotations;
 
 import org.jspecify.annotations.NonNull;
-import org.junit.jupiter.api.extension.*;
+import org.junit.jupiter.api.extension.AfterEachCallback;
+import org.junit.jupiter.api.extension.BeforeEachCallback;
+import org.junit.jupiter.api.extension.ExtensionContext;
 import org.openqa.selenium.WebDriver;
 import selenium.webdriver.DriverFactory;
 import selenium.webdriver.DriverHolder;

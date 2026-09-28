@@ -42,7 +42,7 @@ public class DrawInCanvasTests extends BaseTest {
         Assertions.assertEquals("Click to draw.", drawInCanvasPage.getDescription());
     }
 
-    @RepeatedTest(2)
+    @Test
     @Headed
     @Severity(SeverityLevel.CRITICAL)
     @Tag(Namespaces.Severity.CRITICAL)
