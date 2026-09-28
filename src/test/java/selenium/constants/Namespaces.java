@@ -34,6 +34,7 @@ public class Namespaces {
         public static final String DOWNLOAD_FILES = "Download Files page";
         public static final String AB_TESTING = "A/B Testing page";
         public static final String DATA_TYPES = "Data Types page";
+        public static final String WEB_STORAGE = "Web storage";
     }
 
     public static class Tags {

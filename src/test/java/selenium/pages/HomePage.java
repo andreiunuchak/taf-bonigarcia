@@ -181,10 +181,10 @@ public class HomePage extends BasePage {
     }
 
     @Step("Click WebStorage button")
-    public HomePage clickWebStorage() {
+    public WebStoragePage clickWebStorage() {
         new   Actions(driver).moveToElement(driver.findElement(byWebStorage)).click().perform();
         waiters.waitUntilPageLoaded();
-        return new HomePage(driver);
+        return new WebStoragePage(driver);
     }
 
     @Step("Click Geolocation button")
