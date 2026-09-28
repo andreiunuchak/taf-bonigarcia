@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class HomePage extends BasePage {
-    public final String URL = "https://bonigarcia.dev/selenium-webdriver-java/";
+    public final String URL = ORIGIN + "/selenium-webdriver-java/";
     private final By byTitle = By.xpath("//h1");
     private final By bySubtitle = By.xpath("//h1/following-sibling::h5");
     private final By byDescription = By.xpath("//p");
@@ -188,10 +188,10 @@ public class HomePage extends BasePage {
     }
 
     @Step("Click Geolocation button")
-    public HomePage clickGeolocation() {
+    public GeolocationPage clickGeolocation() {
         new  Actions(driver).moveToElement(driver.findElement(byGeolocation)).click().perform();
         waiters.waitUntilPageLoaded();
-        return new HomePage(driver);
+        return new GeolocationPage(driver);
     }
 
     @Step("Click Notifications button")

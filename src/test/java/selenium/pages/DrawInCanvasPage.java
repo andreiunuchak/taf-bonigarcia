@@ -5,7 +5,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 
 public class DrawInCanvasPage extends BasePage {
-    private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/draw-in-canvas.html";
+    private final String URL = ORIGIN + "/selenium-webdriver-java/draw-in-canvas.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byDescription = By.xpath("//p");
     private final By byCanvas = By.id("my-canvas");

@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.Objects;
 
 public class WebFormPage extends BasePage {
-    private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/web-form.html";
+    private final String URL = ORIGIN + "/selenium-webdriver-java/web-form.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byTextInput = By.id("my-text-id");
     private final By byPassword = By.name("my-password");

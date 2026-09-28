@@ -9,7 +9,7 @@ import org.openqa.selenium.interactions.Actions;
 import java.util.List;
 
 public class FramesPage extends BasePage {
-    private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/frames.html";
+    private final String URL = ORIGIN + "/selenium-webdriver-java/frames.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byHeaderFrame = By.xpath("//frame[@name='frame-header']");
     private final By byBodyFrame = By.xpath("//frame[@name='frame-body']");

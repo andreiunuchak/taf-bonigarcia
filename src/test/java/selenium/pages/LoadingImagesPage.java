@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 
 
 public class LoadingImagesPage extends BasePage {
-    private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/loading-images.html";
+    private final String URL = ORIGIN + "/selenium-webdriver-java/loading-images.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byStatus = By.id("text");
     private final By byStatusSpinner = By.xpath("//p[@id='text']/span");

@@ -12,5 +12,6 @@ import java.lang.annotation.Target;
 @ExtendWith(HeadlessExtension.class)
 public @interface Headless {
     boolean proxy() default false;
+    boolean geolocation() default false;
 }
 
