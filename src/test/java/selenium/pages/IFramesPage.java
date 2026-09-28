@@ -10,7 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import java.util.List;
 
 public class IFramesPage extends BasePage {
-    private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/iframes.html";
+    private final String URL = ORIGIN + "/selenium-webdriver-java/iframes.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byIFrame = By.id("my-iframe");
     private final By byParagraph = By.xpath("//p");

@@ -6,7 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 public class WebStoragePage extends BasePage{
-    private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/web-storage.html";
+    private final String URL = ORIGIN + "/selenium-webdriver-java/web-storage.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byDisplayLocalStorage = By.id("display-local");
     private final By byDisplaySessionStorage = By.id("display-session");

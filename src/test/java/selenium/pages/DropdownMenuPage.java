@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class DropdownMenuPage extends BasePage {
-    private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/dropdown-menu.html";
+    private final String URL = ORIGIN + "/selenium-webdriver-java/dropdown-menu.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byLeftClickDropdown = By.id("my-dropdown-1");
     private final By byRightClickDropdown = By.id("my-dropdown-2");

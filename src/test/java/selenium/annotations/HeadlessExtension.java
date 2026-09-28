@@ -16,11 +16,12 @@ public class HeadlessExtension implements BeforeEachCallback, AfterEachCallback 
     @Override
     public void beforeEach(@NonNull ExtensionContext context) {
         WebDriver driver;
-        boolean toProxy = isProxyRequested(context);
+        boolean proxy = isProxyRequested(context);
+        boolean geo = isGeoRequested(context);
         if (isHeadlessRequested(context)) {
-            driver = DriverFactory.getDriver(toProxy, "--headless=new");
+            driver = DriverFactory.getDriver(proxy, geo, "--headless=new");
         } else {
-            driver = DriverFactory.getDriver(toProxy);
+            driver = DriverFactory.getDriver(proxy, geo);
         }
         DriverHolder.setDriver(driver);
     }
@@ -56,6 +57,24 @@ public class HeadlessExtension implements BeforeEachCallback, AfterEachCallback 
         }
         if (testClass.isPresent() && testClass.get().isAnnotationPresent(Headed.class)) {
             return testClass.get().getAnnotation(Headed.class).proxy();
+        }
+        return false;
+    }
+
+    private boolean isGeoRequested(ExtensionContext context) {
+        Optional<Method> testMethod = context.getTestMethod();
+        if (testMethod.isPresent() && testMethod.get().isAnnotationPresent(Headless.class)) {
+            return testMethod.get().getAnnotation(Headless.class).geolocation();
+        }
+        if (testMethod.isPresent() && testMethod.get().isAnnotationPresent(Headed.class)) {
+            return testMethod.get().getAnnotation(Headed.class).geolocation();
+        }
+        Optional<Class<?>> testClass = context.getTestClass();
+        if (testClass.isPresent() && testClass.get().isAnnotationPresent(Headless.class)) {
+            return testClass.get().getAnnotation(Headless.class).geolocation();
+        }
+        if (testClass.isPresent() && testClass.get().isAnnotationPresent(Headed.class)) {
+            return testClass.get().getAnnotation(Headed.class).geolocation();
         }
         return false;
     }

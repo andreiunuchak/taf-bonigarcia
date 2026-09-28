@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class MouseOverPage extends BasePage {
-    private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/mouse-over.html";
+    private final String URL = ORIGIN + "/selenium-webdriver-java/mouse-over.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byCompassImage = By.xpath("//img[@src='img/compass.png']");
     private final By byCalendarImage = By.xpath("//img[@src='img/calendar.png']");

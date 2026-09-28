@@ -10,7 +10,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class CookiesPage extends BasePage {
-    private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/cookies.html";
+    private final String URL = ORIGIN + "/selenium-webdriver-java/cookies.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byDisplayCookies = By.id("refresh-cookies");
     private final By byCookiesList = By.id("cookies-list");

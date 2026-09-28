@@ -5,7 +5,7 @@ import org.openqa.selenium.*;
 import selenium.utils.Waiters;
 
 public class DialogBoxesPage extends BasePage {
-    private final String URL = "https://bonigarcia.dev/selenium-webdriver-java/dialog-boxes.html";
+    private final String URL = ORIGIN + "/selenium-webdriver-java/dialog-boxes.html";
     private final By byTitle = By.xpath("//h1[@class='display-6']");
     private final By byLaunchAlertButton = By.id("my-alert");
     private final By byLaunchConfirmButton = By.id("my-confirm");
