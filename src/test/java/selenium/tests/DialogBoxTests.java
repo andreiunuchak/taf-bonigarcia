@@ -1,9 +1,9 @@
 package selenium.tests;
 
-import com.github.javafaker.Faker;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
+import net.datafaker.Faker;
 import org.junit.jupiter.api.*;
 import selenium.annotations.Headless;
 import selenium.constants.Namespaces;
