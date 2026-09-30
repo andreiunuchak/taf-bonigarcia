@@ -13,4 +13,5 @@ import java.lang.annotation.Target;
 public @interface Headed {
     boolean proxy() default false;
     boolean geolocation() default false;
+    String[] options() default {};
 }
