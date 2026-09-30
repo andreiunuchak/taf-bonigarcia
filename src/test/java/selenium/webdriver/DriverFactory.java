@@ -19,11 +19,11 @@ public abstract class DriverFactory {
 
     private static final String DEFAULT_PROXY = System.getProperty("proxy.url", "localhost:8080");
 
-    public static WebDriver getDriver(boolean proxy, boolean geolocation, String... options) {
-        String remoteURL = Optional.ofNullable(System.getenv("remote_url")).orElse(System.getProperty("remote_url"));
+    public static WebDriver getDriver(DriverConfig config, String... options) {
+        String remoteURL = Optional.ofNullable(System.getenv("remote_url")).orElseGet(() -> System.getProperty("remote_url"));
         String browserType = System.getProperty("browser", "chrome").toLowerCase();
 
-        AbstractDriverOptions<?> driverOptions = createOptions(browserType, proxy, geolocation, remoteURL != null && !remoteURL.isBlank(), options);
+        AbstractDriverOptions<?> driverOptions = createOptions(browserType, config, remoteURL != null && !remoteURL.isBlank(), options);
 
         WebDriver driver = (remoteURL != null && !remoteURL.isBlank())
                 ? createRemoteDriver(remoteURL, driverOptions)
@@ -34,14 +34,14 @@ public abstract class DriverFactory {
         return driver;
     }
 
-    private static AbstractDriverOptions<?> createOptions(String browserType, boolean proxy, boolean geolocation, boolean isRemote, String... options) {
+    private static AbstractDriverOptions<?> createOptions(String browserType, DriverConfig config, boolean isRemote, String... options) {
         AbstractDriverOptions<?> driverOptions = switch (browserType) {
-            case "chrome" -> buildChromeOptions(isRemote, geolocation, options);
-            case "firefox" -> buildFirefoxOptions(isRemote, geolocation, options);
+            case "chrome" -> buildChromeOptions(isRemote, config, options);
+            case "firefox" -> buildFirefoxOptions(isRemote, config, options);
             default -> throw new IllegalArgumentException("Unsupported browser: " + browserType);
         };
 
-        if (proxy) {
+        if (config.isProxy()) {
             Proxy proxyP = new Proxy()
                     .setHttpProxy(DEFAULT_PROXY)
                     .setSslProxy(DEFAULT_PROXY);
@@ -51,7 +51,7 @@ public abstract class DriverFactory {
         return driverOptions;
     }
 
-    private static ChromeOptions buildChromeOptions(boolean isRemote, boolean geolocation, String... options) {
+    private static ChromeOptions buildChromeOptions(boolean isRemote, DriverConfig config, String... options) {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments(options);
         if (isRemote) {
@@ -60,21 +60,27 @@ public abstract class DriverFactory {
         } else {
             chromeOptions.addArguments("--disable-search-engine-choice-screen");
         }
-        if (geolocation) {
+        if (config.isGeolocation()) {
             chromeOptions.enableBiDi();
+        }
+        if (config.isHeadless()) {
+            chromeOptions.addArguments("--headless=new");
         }
         return chromeOptions;
     }
 
-    private static FirefoxOptions buildFirefoxOptions(boolean isRemote, boolean geolocation, String... options) {
+    private static FirefoxOptions buildFirefoxOptions(boolean isRemote, DriverConfig config, String... options) {
         FirefoxOptions firefoxOptions = new FirefoxOptions();
         firefoxOptions.addArguments(options);
+        if (config.isGeolocation()) {
+            firefoxOptions.enableBiDi();
+        }
+        if (config.isHeadless()) {
+            firefoxOptions.addArguments("--headless");
+        }
         if (isRemote) {
             firefoxOptions.addArguments("--no-sandbox", "--disable-dev-shm-usage");
             firefoxOptions.setCapability("moz:debuggerAddress", true);
-        }
-        if (geolocation) {
-            firefoxOptions.enableBiDi();
         }
         return firefoxOptions;
     }

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.extension.AfterEachCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.openqa.selenium.WebDriver;
+import selenium.webdriver.DriverConfig;
 import selenium.webdriver.DriverFactory;
 import selenium.webdriver.DriverHolder;
 
@@ -15,14 +16,11 @@ public class HeadlessExtension implements BeforeEachCallback, AfterEachCallback 
 
     @Override
     public void beforeEach(@NonNull ExtensionContext context) {
-        WebDriver driver;
+        boolean headless = isHeadlessRequested(context);
         boolean proxy = isProxyRequested(context);
         boolean geo = isGeoRequested(context);
-        if (isHeadlessRequested(context)) {
-            driver = DriverFactory.getDriver(proxy, geo, "--headless=new");
-        } else {
-            driver = DriverFactory.getDriver(proxy, geo);
-        }
+        String[] options = getAnnotationOptions(context);
+        WebDriver driver = DriverFactory.getDriver(new DriverConfig(headless, proxy, geo), options);
         DriverHolder.setDriver(driver);
     }
 
@@ -77,5 +75,23 @@ public class HeadlessExtension implements BeforeEachCallback, AfterEachCallback 
             return testClass.get().getAnnotation(Headed.class).geolocation();
         }
         return false;
+    }
+
+    private String[] getAnnotationOptions(ExtensionContext context) {
+        Optional<Method> testMethod = context.getTestMethod();
+        if (testMethod.isPresent() && testMethod.get().isAnnotationPresent(Headless.class)) {
+            return testMethod.get().getAnnotation(Headless.class).options();
+        }
+        if (testMethod.isPresent() && testMethod.get().isAnnotationPresent(Headed.class)) {
+            return testMethod.get().getAnnotation(Headed.class).options();
+        }
+        Optional<Class<?>> testClass = context.getTestClass();
+        if (testClass.isPresent() && testClass.get().isAnnotationPresent(Headless.class)) {
+            return testClass.get().getAnnotation(Headless.class).options();
+        }
+        if (testClass.isPresent() && testClass.get().isAnnotationPresent(Headed.class)) {
+            return testClass.get().getAnnotation(Headed.class).options();
+        }
+        return null;
     }
 }
